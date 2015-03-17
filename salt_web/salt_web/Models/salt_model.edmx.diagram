@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="598f62720e164b5ea1007e5415fb069b" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="salt_model.aspnet_Users" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="salt_model.Client" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="salt_model.MenuUSState" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="salt_model.Vendor" Width="1.5" PointX="7.25" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="salt_model.MenuContractStatu" Width="2.125" PointX="4.75" PointY="4.375" />
+        <EntityTypeShape EntityType="salt_model.MenuContractConfirm" Width="1.875" PointX="9.25" PointY="1" />
+        <EntityTypeShape EntityType="salt_model.MenuAssigned" Width="1.5" PointX="9.25" PointY="3" />
+        <EntityTypeShape EntityType="salt_model.MenuRecoveryType" Width="1.5" PointX="9.25" PointY="5" />
+        <EntityTypeShape EntityType="salt_model.MenuTravel" Width="1.5" PointX="11.5" PointY="1.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="salt_model.aspnet_Membership" Width="1.5" PointX="13.5" PointY="1.375" IsExpanded="true" />
+        <AssociationConnector Association="salt_model.FK__aspnet_Me__UserI__7834CCDD" />
+        <EntityTypeShape EntityType="salt_model.WorkWeb" Width="1.5" PointX="11.5" PointY="5.5" />
+        <EntityTypeShape EntityType="salt_model.MenuRental" Width="1.5" PointX="5.375" PointY="6.75" />
+        <EntityTypeShape EntityType="salt_model.MenuContractType" Width="1.5" PointX="7.375" PointY="7.75" />
+        <EntityTypeShape EntityType="salt_model.aspnet_Roles" Width="1.5" PointX="11.5" PointY="3" />
+        <EntityTypeShape EntityType="salt_model.aspnet_Applications" Width="1.5" PointX="16" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="salt_model.aspnet_Profile" Width="1.5" PointX="9.75" PointY="31" />
+        <AssociationConnector Association="salt_model.FK__aspnet_Me__Appli__7740A8A4" />
+        <AssociationConnector Association="salt_model.FK__aspnet_Ro__Appli__15C52FC4" />
+        <AssociationConnector Association="salt_model.FK__aspnet_Pr__UserI__0C3BC58A" />
+        <AssociationConnector Association="salt_model.aspnet_UsersInRoles" />
+        <EntityTypeShape EntityType="salt_model.RefundEntry" Width="1.5" PointX="9.5" PointY="7" />
+        <EntityTypeShape EntityType="salt_model.MenuCollectionNote" Width="1.5" PointX="5" PointY="2.625" />
+        <EntityTypeShape EntityType="salt_model.CreditInterestReveived" Width="1.5" PointX="5.25" PointY="8.5" />
+        <EntityTypeShape EntityType="salt_model.StateRefundEntry" Width="1.5" PointX="5.375" PointY="10.75" />
+        <EntityTypeShape EntityType="salt_model.FutureBenefitsEntry" Width="1.5" PointX="7.375" PointY="11.75" />
+        <EntityTypeShape EntityType="salt_model.CustomerPaymentsEntry" Width="1.5" PointX="9.375" PointY="11.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

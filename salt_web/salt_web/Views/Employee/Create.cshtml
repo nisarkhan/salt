@@ -1,0 +1,311 @@
+﻿@model salt_web.Models.EmployeeViewModel
+
+@{ ViewBag.Title = "Edit"; }
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+
+            $("#DOH").datepicker({ //case sensitive
+                dateFormat: 'MMM/dd/yyyy', autoclose: true,
+                showOn: "button",
+                buttonImage: "../calendar/images/calendar.gif",
+                buttonImageOnly: true,
+                changeMonth: true,
+                changeYear: true
+            });
+
+            $("#LDE").datepicker({
+                dateFormat: 'MMM/dd/yyyy', autoclose: true,
+                showOn: "button",
+                buttonImage: "../calendar/images/calendar.gif",
+                buttonImageOnly: true,
+                changeMonth: true,
+                changeYear: true
+            });
+        });
+    </script>
+}
+ 
+
+
+<div class="col-lg-12">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            Create Vendor
+        </div>
+
+        @if (TempData["message"] != null)
+        { @Html.Partial("~/Views/Shared/partial/_notification.cshtml");
+        }
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="panel-body">
+        <!-- Nav tabs -->
+        <ul class="nav nav-pills">
+            <li class="active">
+                <a href="#Business" data-toggle="tab">New Employee</a>
+            </li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="Business">
+
+                <div class="form-horizontal">
+                    <hr />
+                    <div class="row">
+                        <p>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-5 control-label">User Name:</label>
+                                    <div class="col-xs-7">
+                                        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+
+                                    </div>
+                                </div>
+                            </div>
+
+                    </div>
+                    <p>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label class="col-xs-5 control-label">First Name:</label>
+                                    <div class="col-xs-7">
+                                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-5 control-label">Last Name:</label>
+                                    <div class="col-xs-7">
+                                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <p>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-5 control-label">Email Address:</label>
+                                    <div class="col-xs-7">
+                                        @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <label for="" class="col-xs-5 control-label">Initials:</label>
+                                <div class="col-xs-7">
+                                    @Html.EditorFor(model => model.Initials, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Initials, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    <p>
+                        <div class="row">
+                             
+
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-5 control-label">DOH:</label>
+                                    <div class="col-xs-5">
+                                        <div class="input-group">
+                                            @Html.EditorFor(model => model.DOH, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.DOH, "", new { @class = "text-danger" })
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-5 control-label">LDE:</label>
+                                    <div class="col-xs-5">
+                                        <div class="input-group">
+                                            @Html.EditorFor(model => model.LDE, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.LDE, "", new { @class = "text-danger" })
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                    <p>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-5 control-label">Comment:</label>
+                                    <div class="col-xs-7">
+                                        @Html.EditorFor(model => model.Comment, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-5 control-label">IsApproved:</label>
+                                    <div class="col-xs-7">
+                                        @Html.CheckBoxFor(model => model.IsApproved, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.IsApproved, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <p>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-5 control-label">Manager:</label>
+                                    <div class="col-xs-7">
+                                        @Html.DropDownListFor(m => m.Manager, (IEnumerable<SelectListItem>)ViewBag.DropDownManager, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Manager, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-5 control-label">SecManager:</label>
+                                    <div class="col-xs-7">
+                                        @Html.DropDownListFor(m => m.SecManager, (IEnumerable<SelectListItem>)ViewBag.DropDownSecManager, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.SecManager, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <p>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-5 control-label">Trainer:</label>
+                                    <div class="col-xs-7">
+                                        @Html.DropDownListFor(m => m.Trainer, (IEnumerable<SelectListItem>)ViewBag.DropDownTrainer, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.Trainer, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-5 control-label">Type Manager:</label>
+                                    <div class="col-xs-7">
+                                        @Html.CheckBoxFor(model => model.TypeManager, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.TypeManager, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <p>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-5 control-label">Type Auditor:</label>
+                                    <div class="col-xs-7">
+                                        @Html.CheckBoxFor(model => model.TypeAuditor, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.TypeAuditor, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-5 control-label">Type BDR:</label>
+                                    <div class="col-xs-7">
+                                        @Html.CheckBoxFor(model => model.TypeBDR, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.TypeBDR, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <p>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-5 control-label">Type Trainer:</label>
+                                    <div class="col-xs-7">
+                                        @Html.CheckBoxFor(model => model.TypeTrainer)
+                                        @Html.ValidationMessageFor(model => model.TypeTrainer, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-5 control-label">Type Acct Rep:</label>
+                                    <div class="col-xs-7">
+                                        @Html.CheckBoxFor(model => model.TypeAcctRep)
+                                        @Html.ValidationMessageFor(model => model.TypeAcctRep, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <p>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-5 control-label">Type Col Rep:</label>
+                                    <div class="col-xs-7">
+                                        @Html.CheckBoxFor(model => model.TypeColRep, new { @class = "checkbox right" })
+                                        @Html.ValidationMessageFor(model => model.TypeColRep, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-5 control-label">Password:</label>
+                                    <div class="col-xs-7">
+                                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <p>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-5 control-label">Password Question:</label>
+                                    <div class="col-xs-7">
+
+                                        @Html.EditorFor(model => model.PasswordQuestion, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.PasswordQuestion, "", new { @class = "text-danger" })
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <label for="" class="col-xs-5 control-label">Password Answer:</label>
+                                    <div class="col-xs-7">
+                                        @Html.EditorFor(model => model.PasswordAnswer, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.PasswordAnswer, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <p>
+                </div>
+                <div class="row text-right">
+                    <div class="col-xs-12">
+                        @Html.ActionLink("Back to List", "Index")
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <button class="btn btn-default" type="submit"> <i class="fa fa-save"></i> Save </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+            <br />
+        }
+    </div>
+</div>

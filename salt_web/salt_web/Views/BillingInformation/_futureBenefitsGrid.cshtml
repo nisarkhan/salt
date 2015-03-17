@@ -1,0 +1,82 @@
+﻿@model salt_web.Models.BillingInformationViewModel
+<div class="panel-body">
+    <div class="tab-content">
+        <div class="tab-pane active">
+            <table class="table">
+                <tr style="color:#3399f3">
+                    <th>
+                        Installment
+                    </th>
+                    <th>
+                        Orginal Amount
+                    </th>
+                    <th>
+                        Adjusted
+                    </th>
+                    <th>
+                        Collection Note
+                    </th>
+                    <th>
+                        Amount Recovered
+                    </th>
+                    <th>
+                        Batch Number
+                    </th>
+                    <th>
+                        Notes
+                    </th>
+                </tr>
+                @if (Model != null)
+                {
+                    foreach (var itemState in Model.FutureBenefits)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => itemState.Installment)
+                            </td>
+                            <td style="text-align:right;">
+                                @Html.DisplayFor(modelItem => itemState.OrginalAmount)
+                            </td>
+                            <td style="text-align:right;">
+                                @Html.DisplayFor(modelItem => itemState.Adjusted)
+                            </td>
+                            <td style="text-align:right;">
+                                @Html.DisplayFor(modelItem => itemState.AmountRecovered)
+                            </td>
+                            <td style="text-align:right;">
+                                @Html.DisplayFor(modelItem => itemState.BatchNumber)
+                            </td>
+                            <td style="text-align:right;">
+                                @Html.DisplayFor(modelItem => itemState.BatchNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => itemState.Notes)
+                            </td>
+                        </tr>
+                    }
+                }
+            </table>
+            <table class="table" style="border:1px;background-color:#efeded;">
+                <tr>
+                    <th>
+                        Totals:
+                    </th>
+                    <th style="text-align:left;">
+                        $@Html.DisplayFor(x => x.FutureBenefitTotal.OrginalAmount)
+                    </th>
+                    <th style="text-align:left;">
+                        $@Html.DisplayFor(x => x.FutureBenefitTotal.Adjusted)
+                    </th>
+                    <th style="text-align:left;">
+                    </th>
+                    <th style="text-align:left;">
+                        $@Html.DisplayFor(x => x.FutureBenefitTotal.AmountRecovered)
+                    </th>
+                    <th style="text-align:left;"></th>
+                    <th style="text-align:left;"></th>
+                    <th style="text-align:left;"></th>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

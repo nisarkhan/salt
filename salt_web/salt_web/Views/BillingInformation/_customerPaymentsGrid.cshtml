@@ -1,0 +1,99 @@
+﻿@model salt_web.Models.BillingInformationViewModel
+<div class="panel-body">
+    <div class="tab-content">
+        <div class="tab-pane active">
+            <table class="table">
+                <tr style="color:#3399f3">
+                    <th style="text-align:right;width:100px">
+                        Check Number/ID
+                    </th>
+                    <th style="text-align:right;width:100px">
+                        PrePay Amount
+                    </th>
+                    <th style="text-align:right;width:100px">
+                        PrePay Credit
+                    </th>
+                    <th style="text-align:right;width:100px">
+                        PrePay Balance
+                    </th>
+                    <th style="text-align:right;width:100px">
+                        Applied To Balance Due
+                    </th>
+                    <th style="text-align:right;width:100px">
+                        Batch Number
+                    </th>
+                    <th style="text-align:center;width:250px">
+                        Notes
+                    </th>
+                </tr>
+                @if (Model != null)
+                {
+                    foreach (var itemCustomerPayment in Model.CustomerPayments)
+                    {
+                        <tr>
+                            <td style="text-align:right;width:100px">
+                                @Html.DisplayFor(modelItem => itemCustomerPayment.CheckNumber)
+                            </td>
+                            <td style="text-align:right;width:100px">
+                                @Html.DisplayFor(modelItem => itemCustomerPayment.PrepayAmount)
+                            </td>
+                            <td style="text-align:right;width:100px">
+                                @Html.DisplayFor(modelItem => itemCustomerPayment.PrePayCredit)
+                            </td>
+                            <td style="text-align:right;width:100px">
+                                @Html.DisplayFor(modelItem => itemCustomerPayment.PrePayBalance)
+                            </td>
+                            <td style="text-align:right;width:100px">
+                                @Html.DisplayFor(modelItem => itemCustomerPayment.AppliedBalance)
+                            </td>
+                            <td style="text-align:right;width:100px">
+                                @Html.DisplayFor(modelItem => itemCustomerPayment.BatchNumber)
+                            </td>
+                            <td style="text-align:center;width:100px">
+                                @Html.DisplayFor(modelItem => itemCustomerPayment.Notes)
+                            </td>
+                        </tr>
+                    }
+                }
+            </table>
+            <table class="table" style="border:1px;background-color:#efeded;">
+                <tr>
+                    <th>
+                        Totals:
+                    </th>
+                    <th></th>
+                    <th></th>
+                    <th style="text-align:left;">
+                        $@Html.DisplayFor(x => x.CustomerPaymentSum.PrepayBalance)
+                    </th>
+                    <th style="text-align:left;">
+                        $@Html.DisplayFor(x => x.CustomerPaymentSum.AppliedToBalanceDue)
+                    </th>
+                    <th style="text-align:left;">
+                    </th>
+
+                    <th style="text-align:left;"></th>
+                </tr>
+            </table>
+
+            <div style="padding:10px 10px 20px 10px; background-color:#efeded;border:dotted;width:450px">
+                <p /><div>&nbsp;Total left to collect:  <b>$@Html.DisplayFor(x => x.CustomerPaymentSum.FeeLeftToCollect)</b></div>
+                <p /><div>&nbsp;Total left to collect W/RA's:  <b>$@Html.DisplayFor(x => x.CustomerPaymentSum.FeeLeftToCollectWRAS)</b></div>
+                <p></p>
+                @using (Html.BeginForm("Create", "BillingInformation", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div>
+                        &nbsp;Balance to quickbooks:  <b>
+                            $<input type="text" style="width: 100px" value="@Html.DisplayFor(x => x.CustomerPaymentSum.BalanceToQuickBooksEdit)" name="balanceToQuickBooksEdit" id="balanceToQuickBooksEdit" />
+                            &nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Update" />
+                        </b>
+                    </div>
+                }
+
+                <p /><div>&nbsp;Applied to balance due:  <b>$@Html.DisplayFor(x => x.CustomerPaymentSum.BalanceToQuickBooks)</b></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,319 @@
+﻿@model salt_web.Models.ClientViewModel
+
+@{ViewBag.Title = "Edit";}
+
+@section scripts {
+
+    <script>
+        $(document).ready(function () {
+            $("#ContractDateSigned").datepicker({
+                dateFormat: 'MMM/dd/yyyy', autoclose: true,
+                showOn: "button",
+                buttonImage: "../calendar/images/calendar.gif",
+                buttonImageOnly: true,
+                changeMonth: true,
+                changeYear: true
+            });
+
+            $("#AuditDate").datepicker({
+                dateFormat: 'MMM/dd/yyyy', autoclose: true,
+                showOn: "button",
+                buttonImage: "../calendar/images/calendar.gif",
+                buttonImageOnly: true,
+                changeMonth: true,
+                changeYear: true
+            });
+        });
+    </script>
+}
+
+@if (TempData["message"] != null)
+{ @Html.Partial("~/Views/Shared/partial/_notification.cshtml");
+}
+
+
+
+<div class="col-xs-12">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            Job Tracking
+        </div>
+        <div class="panel-body">
+            <div class="col-xs-7">
+
+                <p><span class="strong">Company Name:</span>&nbsp @Html.DisplayFor(m => m.CompanyLegalName)</p>
+                <p>
+                    <span class="strong">Address:</span><br />
+                    @if (Model != null)
+                    {
+                        if (Model.Address != null)
+                        {
+                            @Html.DisplayFor(m => m.Address)  <br />
+                            @Html.DisplayFor(m => m.City)
+                            @Html.DisplayFor(m => m.State)
+                            @Html.DisplayFor(m => m.ZipCode)
+                        }
+                    }
+
+                </p>
+                <p><span class="strong">Phone Number:</span>&nbsp @Html.DisplayFor(m => m.PhoneNumber)</p>
+            </div>
+            <div class="col-xs-4">
+                <p><span class="strong">Fax Number:</span>&nbsp @Html.DisplayFor(m => m.FaxNumber)</p>
+                <p><span class="strong">Contact Name:</span>&nbsp @Html.DisplayFor(m => m.ContactFirstName) &nbsp @Html.DisplayFor(m => m.ContactLastName)</p>
+                <p>
+                    <span class="strong">Contact Audit Date:</span>&nbsp @if (Model != null)
+                    {
+                        if (Model.AuditDate.HasValue)
+                        { @Model.AuditDate.Value.ToShortDateString() }
+                    }
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(m => m.ClientPKID)
+
+    <div class="col-xs-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                Update - Job Tracking
+            </div>
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="Business">
+
+                    <div class="form-horizontal">
+                        <hr />
+
+                        <div class="row">
+                            <p>
+                                <div class="col-xs-5">
+                                    <div class="form-group">
+                                        <label for="" class="col-xs-5 control-label">Client Code:</label>
+                                        <div class="col-xs-5">
+                                            @Html.HiddenFor(m => m.ClientCode, new { id = "hdn_clientcode" })
+                                            @Html.HiddenFor(m => m.CompanyLegalName, new { id = "hdn_companylegalname" })
+                                            @Html.HiddenFor(m => m.PhoneNumber, new { id = "hdn_phonenumber" })
+
+                                            @Html.EditorFor(m => m.CustomerID, new { htmlAttributes = new { @class = "form-control", @readonly = true }, disabled = "disabled" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-5">
+                                    <div class="form-group">
+                                        <div class="col-xs-5">
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <p>
+                            <div class="row">
+                                <div class="col-xs-5">
+                                    <div class="form-group">
+                                        <label for="" class="col-xs-5 control-label">Auditors Key:</label>
+                                        <div class="col-xs-5">
+                                            @Html.DropDownListFor(m => m.Auditors_Key, (IEnumerable<SelectListItem>)ViewBag.DropDownAuditorsKey, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.Auditors_Key, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-5">
+                                    <div class="form-group">
+                                        <label for="" class="col-xs-5 control-label">Contract Status:</label>
+                                        <div class="col-xs-5">
+                                            @Html.DropDownListFor(m => m.JKHStatus, (IEnumerable<SelectListItem>)ViewBag.DropDownContractStatus, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.JKHStatus, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <p>
+                            <div class="row">
+                                <div class="col-xs-5">
+                                    <div class="form-group">
+                                        <label for="" class="col-xs-5 control-label">Primary Sales Staff:</label>
+                                        <div class="col-xs-5">
+                                            @Html.DropDownListFor(m => m.PrimarySalesStaff, (IEnumerable<SelectListItem>)ViewBag.DropDownPrimarySalesStaff, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.PrimarySalesStaff, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-5">
+                                    <label for="" class="col-xs-5 control-label">Secondary Sales Staff:</label>
+                                    <div class="col-xs-5">
+                                        @Html.DropDownListFor(m => m.SecondarySalesStaff, (IEnumerable<SelectListItem>)ViewBag.DropDownPrimarySalesStaff, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.SecondarySalesStaff, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        <p>
+                            <div class="row">
+                                <div class="col-xs-5">
+                                    <div class="form-group">
+                                        <label for="" class="col-xs-5 control-label">Acct Rep:</label>
+                                        <div class="col-xs-5">
+                                            @Html.DropDownListFor(m => m.AccountRep, (IEnumerable<SelectListItem>)ViewBag.DropDownAccountRep, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.AccountRep, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-5">
+                                    <div class="form-group">
+                                        <label for="" class="col-xs-5 control-label">Contract Date Signed:</label>
+                                        <div class="col-xs-5">
+                                            <div class="input-group">
+                                                @Html.EditorFor(m => m.ContractDateSigned, new { htmlAttributes = new { @Value = Model.ContractDateSigned, @class = "form-control" } })
+                                                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
+                                                @Html.ValidationMessageFor(m => m.ContractDateSigned, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <p>
+                            <div class="row">
+                                <div class="col-xs-5">
+                                    <div class="form-group">
+                                        <label for="" class="col-xs-5 control-label">LOADate:</label>
+                                        <div class="col-xs-5">
+                                            @Html.EditorFor(m => m.LOADate, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(m => m.LOADate, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-5">
+                                    <div class="form-group">
+                                        <label for="" class="col-xs-5 control-label">Confirmed:</label>
+                                        <div class="col-xs-5">
+                                            @Html.DropDownListFor(m => m.Confirmed, (IEnumerable<SelectListItem>)ViewBag.DropDownConfirmed, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.Confirmed, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <p>
+                            <div class="row">
+                                <div class="col-xs-5">
+                                    <div class="form-group">
+                                        <label for="" class="col-xs-5 control-label">Estimated Dollar Amount:</label>
+                                        <div class="col-xs-5">
+                                            @Html.EditorFor(m => m.EstimateDollarAmount, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(m => m.EstimateDollarAmount, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-5">
+                                    <div class="form-group">
+                                        <label for="" class="col-xs-5 control-label">Estimate Received Date:</label>
+                                        <div class="col-xs-5">
+                                            @Html.EditorFor(m => m.EstimateDollarAmountReceivedDate, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(m => m.EstimateDollarAmountReceivedDate, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-5">
+                                    <div class="form-group">
+                                        <label for="" class="col-xs-5 control-label">Assigned:</label>
+                                        <div class="col-xs-5">
+                                            @Html.DropDownListFor(m => m.Assigned, (IEnumerable<SelectListItem>)ViewBag.DropDownAssigned, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.Assigned, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-5">
+                                    <div class="form-group">
+                                        <label for="" class="col-xs-5 control-label">Travel:</label>
+                                        <div class="col-xs-5">
+                                            @Html.DropDownListFor(m => m.Travel, (IEnumerable<SelectListItem>)ViewBag.DropDownTravel, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.Travel, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-5">
+                                    <div class="form-group">
+                                        <label for="" class="col-xs-5 control-label">Rental Car:</label>
+                                        <div class="col-xs-5">
+                                            @Html.DropDownListFor(m => m.RentalCar, (IEnumerable<SelectListItem>)ViewBag.DropDownRental, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.RentalCar, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <span>
+                                    <div class="col-xs-5">
+                                        <div class="form-group">
+                                            <label for="" class="col-xs-5 control-label">Audit Date:</label>
+                                            <div class="col-xs-5">
+                                                <div class="input-group">
+                                                    @if (Model != null)
+                                                    {
+                                                        if (Model.AuditDate != null)
+                                                        {
+                                                            @Html.EditorFor(m => m.AuditDate, new { htmlAttributes = new { @Value = Model.AuditDate.Value.ToShortDateString(), @class = "form-control datecontrol", placeholder = "Enter date here..." } })
+                                                        }
+                                                        else
+                                                        {
+                                                            @Html.EditorFor(m => m.AuditDate, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter date here..." } })
+                                                        }
+                                                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
+                                                        @Html.ValidationMessageFor(m => m.AuditDate, "", new { @class = "text-danger" })
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </span>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-5">
+                                    <div class="form-group">
+                                        <label for="" class="col-xs-5 control-label">Notes/Comments:</label>
+                                        <div class="col-xs-5">
+                                            @Html.TextAreaFor(m => m.CommentSalesTracking, 6, 80, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(m => m.CommentSalesTracking, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-5">
+                                    <div class="form-group">
+                                        <div class="col-xs-5">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        <p>
+
+                    </div>
+
+                    <div class="row text-right">
+                        <div class="col-xs-12">
+                            @Html.ActionLink("Back to List", "Index")
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <button class="btn btn-default" type="submit"> <i class="fa fa-save"></i> Save </button> &nbsp;&nbsp;&nbsp;&nbsp;
+                        </div>
+                    </div>
+                    <br />
+
+                </div>
+
+            </div>
+
+            @*<div class="panel-footer">
+                    Panel Footer
+                </div>*@
+        </div>
+    </div>
+}                      

@@ -1,0 +1,560 @@
+﻿@model salt_web.Models.BillingInformationViewModel
+@using PagedList;
+
+@{ViewBag.Title = "Edit";}
+
+@section scripts {
+
+}
+
+@if (TempData["message"] != null)
+{ @Html.Partial("~/Views/Shared/partial/_notification.cshtml");
+}
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Client Info
+            </div>
+            <div class="panel-body">
+                <div class="col-xs-7">
+                    <p><span class="strong">Name:</span>&nbsp @Html.DisplayFor(m => m.MrMs) @Html.DisplayFor(m => m.ContactFirstName) @Html.DisplayFor(m => m.ContactLastName), (@Html.DisplayFor(m => m.ContactTitle))</p>
+
+                    <p><span class="strong">Company Name:</span>&nbsp @Html.DisplayFor(m => m.CompanyLegalName)</p>
+                    <p><span class="strong">Client Code:</span>&nbsp @Html.DisplayFor(m => m.ClientCode)</p>
+                    <p>
+                        <span class="strong">Address:</span><br />
+                        @if (Model != null)
+                        {
+                            if (Model.Address != null)
+                            {
+                                @Html.DisplayFor(m => m.Address)  <br />
+                                @Html.DisplayFor(m => m.City)
+                                @Html.DisplayFor(m => m.State)
+                                @Html.DisplayFor(m => m.ZipCode)
+                            }
+                        }
+
+                    </p>
+                    <p><span class="strong">Phone Number:</span>&nbsp @Html.DisplayFor(m => m.PhoneNumber)</p>
+                    <p><span class="strong">Fax Number:</span>&nbsp @Html.DisplayFor(m => m.FaxNumber)</p>
+                </div>
+
+                <div class="col-xs-4">
+                    <p><span class="strong">Report Date:</span>&nbsp @Html.ValueFor(m => m.ReportDate, "{0:MM/dd/yyyy}")</p>
+                    <p><span class="strong">Acct Rep:</span>&nbsp @Html.DisplayFor(m => m.AcctRep)</p>
+                    <p><span class="strong">Vendor Rep:</span>&nbsp @Html.DisplayFor(m => m.FirstName)  @Html.DisplayFor(m => m.LastName)</p>
+                </div>
+
+                <div class="col-xs-4">
+                    <p><span class="strong">Futures Rate:</span>&nbsp @Html.DisplayFor(m => m.FuturesRate)</p>
+                    <p><span class="strong">Fee Terms:</span>&nbsp @Html.DisplayFor(m => m.FeeTerms)</p>
+                    <p><span class="strong">PMT Terms:</span>&nbsp @Html.DisplayFor(m => m.PPMT)</p>
+                    <p><span class="strong">Consultant:</span>&nbsp @Html.DisplayFor(m => m.Consultant)</p>
+                </div>
+
+                <div class="col-xs-12">
+                    <p><span class="strong">Notes:</span>&nbsp @Html.DisplayFor(m => m.Notes)</p>
+                </div>
+            </div>
+        </div>
+        <div style="text-align:right">
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+        <br />
+    </div>
+
+    <!--refund summary-->
+    <div class="col-xs-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                Refund Summary
+            </div>
+
+            <div class="panel-body">
+                <div class="tab-content">
+                    <div class="tab-pane active">
+                        <table class="table">
+                            <tr style="color:#3399f3">
+                                <th style="text-align:left;width:155px">
+                                    Vendor Name
+                                </th>
+                                <th style="text-align:right;width:100px">
+                                    Tax Amount Idenfified
+                                </th>
+                                <th style="text-align:right;width:100px">
+                                    Adjusted
+                                </th>
+                                <th style="text-align:right;width:100px">
+                                    Collection Note
+                                </th>
+                                <th style="text-align:right;width:100px">
+                                    Amount Recovered
+                                </th>
+                                <th style="text-align:right;width:100px">
+                                    Batch Number
+                                </th>
+                                <th style="text-align:right;width:100px">
+                                    Left To Recover
+                                </th>                                
+                                <th style="text-align:center;width:250px">
+                                    Notes
+                                </th>
+                                <th >
+                                    Actions</th>
+                                
+                            </tr>
+                            @if (Model != null) { 
+                                foreach (var item in Model.RefundSummary)
+                                {
+                                    <tr>
+                                        <td>
+                                            <div>
+                                                <ul class="nav nav-pills">
+                                                    <li class="active">
+                                                        <a data-toggle="tab">@item.RefCollections.FullName</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        @foreach (var items in item.RefCollections.RefundCollections)
+                                        {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => items.VendorName)
+                                            </td>
+                                            <td style="text-align:right;width:100px">
+                                                @Html.DisplayFor(modelItem => items.TaxAmountIdentified)
+                                            </td>
+                                            <td style="text-align:right;width:100px">
+                                                @Html.DisplayFor(modelItem => items.Adjust)
+                                            </td>
+                                            <td style="text-align:right;width:100px">
+                                                @Html.DisplayFor(modelItem => items.CollectionNoteName)
+                                            </td>
+                                            <td style="text-align:right;width:100px">
+                                                @Html.DisplayFor(modelItem => items.AmountRecovered)
+                                            </td>
+                                            <td style="text-align:right;width:100px">
+                                                @Html.DisplayFor(modelItem => items.BatchNumber)
+                                            </td>
+                                            <td style="text-align:right;width:100px">
+                                                @Html.DisplayFor(modelItem => items.LeftToRecover)
+                                            </td>                                            
+                                            <td style="text-align:center;width:100px">
+                                                @Html.DisplayFor(modelItem => items.Notes)
+                                            </td>
+                                            <td>                                                
+                                                @Html.ActionLink("Edit", "RefundSummaryEdit", new { id = items.PKID })  |                                                 
+                                                @Html.ActionLink("Delete", "Delete", new { id = items.PKID, gridName = "RefundSummary" },
+                                                new { onclick = "return confirm('Are you sure you wish to delete this item " + @items.VendorName.Trim()  + "?');" })                                                
+                                            </td>
+                                             
+                                        </tr>
+                                        }
+                                     </tr>
+                                }
+                            }
+                        </table>
+                        <table class="table" style="border:1px;background-color:#efeded;">
+                            <tr>
+                                <th style="text-align:left;width:155px">
+                                    Totals:
+                                </th>
+                                <th style="text-align:right;width:100px">
+                                    $@Html.DisplayFor(x => x.RefundSummaryTotal.TaxAmountIdentifiedSum)
+                                </th>
+                                <th style="text-align:right;width:100px">
+                                    $@Html.DisplayFor(x => x.RefundSummaryTotal.AdjustSum)
+                                </th>
+                                <th style="text-align:right;width:100px">
+                                </th>
+                                <th style="text-align:right;width:100px">
+                                    $@Html.DisplayFor(x => x.RefundSummaryTotal.AmountReceivedSum)
+                                </th>
+                                <th style="text-align:right;width:100px">
+                                    @Html.DisplayFor(x => x.RefundSummaryTotal.BatchPercent)%
+                                </th>
+                                <th style="text-align:right;width:100px">
+                                    @Html.DisplayFor(x => x.RefundSummaryTotal.NotesPercent)%
+                                </th>
+                                <th style="text-align:right;width:100px">
+                                    $@Html.DisplayFor(x => x.RefundSummaryTotal.LeftToReceoverSum)
+                                </th>
+                                <th style="text-align:right;width:100px;">
+                                    </th>
+                            </tr>
+                        </table>
+                        
+                        <div style="padding:10px 10px 20px 10px; background-color:#efeded;border:dotted;width:450px">
+                            <p></p>
+                            @using (Html.BeginForm("Edit", "BillingInformation", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <div>
+                                    &nbsp;Credit Interest Reveived:&nbsp;&nbsp;  <b>
+                                        $<input type="text" style="width: 100px" value="@Html.DisplayFor(x => x.RefundSummaryTotal.CreditInterestRevieved)" name="creditInterestRevived" id="creditInterestRevived" />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Update" />
+                                    </b><br />
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <!--end-refund summary-->
+
+    <!--refund state-->
+    <div class="col-xs-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                Refund at the State
+            </div>
+
+            <div class="panel-body">
+                <div class="tab-content">
+                    <div class="tab-pane active">
+                        <table class="table">
+                            <tr style="color:#3399f3">
+                                <th style="width:155px;">
+                                    Batch Description
+                                </th>
+                                <th style="text-align:right;width:100px">
+                                    Amount Submitted
+                                </th>
+                                <th style="text-align:right;width:100px">
+                                    Amount Paid
+                                </th>
+                                <th style="text-align:right;width:100px">
+                                    Denied Adjusted
+                                </th>
+                                <th style="text-align:right;width:100px">
+                                    Balance At State
+                                </th>
+                                <th style="text-align:right;width:100px">
+                                    Batch Number
+                                </th>
+                                <th style="text-align:right;width:100px">
+                                    MTS Mailed
+                                </th>
+                                <th style="text-align:center;width:300px">
+                                    Notes
+                                </th>
+                                <th style="width:125px;">
+                                    Actions
+                                </th>
+                            </tr>
+                            @if (Model != null) {
+                            foreach (var itemState in Model.StateRefund)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => itemState.BatchDesc)
+                                    </td>
+                                    <td style="text-align:right;width:100px">
+                                        @Html.DisplayFor(modelItem => itemState.AmountSubmitted)
+                                    </td>
+                                    <td style="text-align:right;width:100px">
+                                        @Html.DisplayFor(modelItem => itemState.AmountPaid)
+                                    </td>
+                                    <td style="text-align:right;width:100px">
+                                        @Html.DisplayFor(modelItem => itemState.DeniedAdjusted)
+                                    </td>
+                                    <td style="text-align:right;width:100px">
+                                        @Html.DisplayFor(modelItem => itemState.BalanceAtState)
+                                    </td>
+                                    <td style="text-align:right;width:100px">
+                                        @Html.DisplayFor(modelItem => itemState.BatchNumber)
+                                    </td>
+                                    <td style="text-align:right;width:100px">
+                                        @Html.ValueFor(modelItem => itemState.MTSMailed, "{0:MM/dd/yyyy}")
+                                    </td>
+                                    <td style="text-align:center;width:100px">
+                                        @Html.DisplayFor(modelItem => itemState.Notes)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "RefundStateEdit", new { id = itemState.PKID })  |
+                                        @Html.ActionLink("Delete", "Delete", new { id = itemState.PKID, gridName = "RefundState" },
+                                             new { onclick = "return confirm('Are you sure you wish to delete this item " + @itemState.AmountPaid + "?');" })
+                                    </td>
+                                </tr>
+                            }
+                            }
+                        </table>
+                        <table class="table" style="border:1px;background-color:#efeded;">
+                            <tr>
+                                <th>
+                                    Totals:
+                                </th>
+                                <th style="text-align:left;">
+                                    $@Html.DisplayFor(x => x.RefundStateTotal.AmountSubmitted)
+                                </th>
+                                <th style="text-align:left;">
+                                    $@Html.DisplayFor(x => x.RefundStateTotal.AmountPaid)
+                                </th>
+                                <th style="text-align:left;">
+                                </th>
+                                <th style="text-align:left;">
+                                    $@Html.DisplayFor(x => x.RefundStateTotal.DeniedAdjusted)
+                                </th>
+                                <th style="text-align:left;">
+                                    $@Html.DisplayFor(x => x.RefundStateTotal.BalanceAtState)
+                                </th>
+                                <th style="text-align:left;">
+
+                                </th>
+                                <th style="text-align:left;">
+
+                                </th>
+                            </tr>
+                        </table>
+                        <div>Total+Refunds At State:  <b>$@Html.DisplayFor(x => x.RefundStateTotal.TotalRefundAtState)</b></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align:right">
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+        <br />
+    </div>
+
+    <!--end-refund state-->
+    <!--future benefits-->
+    <div class="col-xs-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                Future Benefits
+            </div>
+
+            <div class="panel-body">
+                <div class="tab-content">
+                    <div class="tab-pane active">
+                        <table class="table">
+                            <tr style="color:#3399f3">
+                                <th>
+                                    Installment
+                                </th>
+                                <th style="text-align:right;width:100px">
+                                    Orginal Amount
+                                </th>
+                                <th style="text-align:right;width:100px">
+                                    Adjusted
+                                </th>
+                                <th style="text-align:right;width:100px">
+                                    Collection Note
+                                </th>
+                                <th style="text-align:right;width:100px">
+                                    Amount Recovered
+                                </th>
+                                <th style="text-align:right;width:100px">
+                                    Batch Number
+                                </th>
+                                <th style="text-align:center;width:300px">
+                                    Notes
+                                </th>
+                                <th>Actions</th>
+                            </tr>
+                            @if (Model != null) {
+                                foreach (var itemState in Model.FutureBenefits)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => itemState.Installment)
+                                        </td>
+                                        <td style="text-align:right;width:100px">
+                                            @Html.DisplayFor(modelItem => itemState.OrginalAmount)
+                                        </td>
+                                        <td style="text-align:right;width:100px">
+                                            @Html.DisplayFor(modelItem => itemState.Adjusted)
+                                        </td>
+                                        <td style="text-align:right;width:100px">
+                                            @Html.DisplayFor(modelItem => itemState.AmountRecovered)
+                                        </td>
+                                        <td style="text-align:right;width:100px">
+                                            @Html.DisplayFor(modelItem => itemState.BatchNumber)
+                                        </td>
+                                        <td style="text-align:right;width:100px">
+                                            @Html.DisplayFor(modelItem => itemState.BatchNumber)
+                                        </td>
+                                        <td style="text-align:center;width:100px">
+                                            @Html.DisplayFor(modelItem => itemState.Notes)
+                                        </td>
+                                        
+                                        <td>
+                                            @Html.ActionLink("Edit", "FutureBenefitsEdit", new { id = itemState.PKID })  |
+                                            @Html.ActionLink("Delete", "Delete", new { id = itemState.PKID, gridName = "FutureBenefits" },
+                                          new { onclick = "return confirm('Are you sure you wish to delete this item " + @itemState.Adjusted + "?');" })
+                                        </td>
+
+                                    </tr>
+                                }
+                            }
+                        </table>
+                        <table class="table" style="border:1px;background-color:#efeded;">
+                            <tr>
+                                <th>
+                                    Totals:
+                                </th>
+                                <th style="text-align:left;">
+                                    $@Html.DisplayFor(x => x.FutureBenefitTotal.OrginalAmount)
+                                </th>
+                                <th style="text-align:left;">
+                                    $@Html.DisplayFor(x => x.FutureBenefitTotal.Adjusted)
+                                </th>
+                                <th style="text-align:left;">
+                                </th>
+                                <th style="text-align:left;">
+                                    $@Html.DisplayFor(x => x.FutureBenefitTotal.AmountRecovered)
+                                </th>
+                                <th style="text-align:left;"></th>
+                                <th style="text-align:left;"></th>
+                                <th style="text-align:left;"></th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align:right">
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+        <br />
+    </div>
+
+
+    <!--customer payments-->
+    <div class="col-xs-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                Customer Payments
+            </div>
+
+            <div class="panel-body">
+                <div class="tab-content">
+                    <div class="tab-pane active">
+                        <table class="table">
+                            <tr style="color:#3399f3">
+                                <th>
+                                    Check Number/ID
+                                </th>
+                                <th style="text-align:right;width:100px">
+                                    PrePay Amount
+                                </th>
+                                <th style="text-align:right;width:100px">
+                                    PrePay Credit
+                                </th>
+                                <th style="text-align:right;width:100px">
+                                    PrePay Balance
+                                </th>
+                                <th style="text-align:right;width:100px">
+                                    Applied To Balance Due
+                                </th>
+                                <th style="text-align:right;width:100px">
+                                    Batch Number
+                                </th>
+                                <th style="text-align:center;width:250px">
+                                    Notes
+                                </th>
+                                <th>Actions</th>
+                            </tr>
+                            @if (Model != null) {
+                                foreach (var itemCustomerPayment in Model.CustomerPayments)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => itemCustomerPayment.CheckNumber)
+                                        </td>
+                                        <td style="text-align:right;width:100px">
+                                            @Html.DisplayFor(modelItem => itemCustomerPayment.PrepayAmount)
+                                        </td>
+                                        <td style="text-align:right;width:100px">
+                                            @Html.DisplayFor(modelItem => itemCustomerPayment.PrePayCredit)
+                                        </td>
+                                        <td style="text-align:right;width:100px">
+                                            @Html.DisplayFor(modelItem => itemCustomerPayment.PrePayBalance)
+                                        </td>
+                                        <td style="text-align:right;width:100px">
+                                            @Html.DisplayFor(modelItem => itemCustomerPayment.AppliedBalance)
+                                        </td>
+                                        <td style="text-align:right;width:100px">
+                                            @Html.DisplayFor(modelItem => itemCustomerPayment.BatchNumber)
+                                        </td>
+                                        <td style="text-align:center;width:100px">
+                                            @Html.DisplayFor(modelItem => itemCustomerPayment.Notes)
+                                        </td>
+                                        <td style="text-align:left;width:150px">
+                                            @Html.ActionLink("Edit", "CustomerPaymentsEdit", new { id = itemCustomerPayment.PKID })  |
+                                            @Html.ActionLink("Delete", "Delete", new { id = itemCustomerPayment.PKID, gridName = "CustomerPayments" },
+                                       new { onclick = "return confirm('Are you sure you wish to delete this item " + @itemCustomerPayment.AppliedBalance + "?');" })
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </table>
+                        <table class="table" style="border:1px;background-color:#efeded;">
+                            <tr>
+                                <th>
+                                    Totals:
+                                </th>
+                                <th></th>
+                                <th></th>
+                                <th style="text-align:left;">
+                                    $@Html.DisplayFor(x => x.CustomerPaymentSum.PrepayBalance)
+                                </th>
+                                <th style="text-align:left;">
+                                    $@Html.DisplayFor(x => x.CustomerPaymentSum.AppliedToBalanceDue)
+                                </th>
+                                <th style="text-align:left;">
+                                </th>
+
+                                <th style="text-align:left;"></th>
+                            </tr>
+                        </table>
+
+                        <div style="padding:10px 10px 20px 10px; background-color:#efeded;border:dotted;width:450px">
+                            <p /><div>&nbsp;Total left to collect:  <b>$@Html.DisplayFor(x => x.CustomerPaymentSum.FeeLeftToCollect)</b></div>
+                            <p /><div>&nbsp;Total left to collect W/RA's:  <b>$@Html.DisplayFor(x => x.CustomerPaymentSum.FeeLeftToCollectWRAS)</b></div>
+                            <p></p>
+                            @using (Html.BeginForm("Edit", "BillingInformation", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <div>
+                                    &nbsp;Balance to quickbooks:  <b>
+                                        $<input type="text" style="width: 100px" value="@Html.DisplayFor(x => x.CustomerPaymentSum.BalanceToQuickBooksEdit)" name="balanceToQuickBooksEdit" id="balanceToQuickBooksEdit" />
+                                        &nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Update" />
+                                    </b>
+                                </div>
+                            }
+
+                            <p /><div>&nbsp;Applied to balance due:  <b>$@Html.DisplayFor(x => x.CustomerPaymentSum.BalanceToQuickBooks)</b></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align:right">
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+        <br />
+    </div>
+
+</div>

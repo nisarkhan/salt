@@ -1,0 +1,96 @@
+﻿@model salt_web.Models.BillingInformationViewModel
+<div class="panel-body">
+    <div class="tab-content">
+        <div class="tab-pane active">
+            <table class="table">
+                <tr style="color:#3399f3">
+                    <th>
+                        Batch Description
+                    </th>
+                    <th style="text-align:right;width:100px">
+                        Amount Submitted
+                    </th>
+                    <th style="text-align:right;width:100px">
+                        Amount Paid
+                    </th>
+                    <th style="text-align:right;width:100px">
+                        Denied Adjusted
+                    </th>
+                    <th style="text-align:right;width:100px">
+                        Balance At State
+                    </th>
+                    <th style="text-align:right;width:100px">
+                        Batch Number
+                    </th>
+                    <th style="text-align:right;width:100px">
+                        MTS Mailed
+                    </th>
+                    <th style="text-align:center;width:250px">
+                        Notes
+                    </th>
+                </tr>
+                @if (Model != null)
+                {
+                    foreach (var itemState in Model.StateRefund)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => itemState.BatchDesc)
+                            </td>
+                            <td style="text-align:right;width:100px">
+                                @Html.DisplayFor(modelItem => itemState.AmountSubmitted)
+                            </td>
+                            <td style="text-align:right;width:100px">
+                                @Html.DisplayFor(modelItem => itemState.AmountPaid)
+                            </td>
+                            <td style="text-align:right;width:100px">
+                                @Html.DisplayFor(modelItem => itemState.DeniedAdjusted)
+                            </td>
+                            <td style="text-align:right;width:100px">
+                                @Html.DisplayFor(modelItem => itemState.BalanceAtState)
+                            </td>
+                            <td style="text-align:right;width:100px">
+                                @Html.DisplayFor(modelItem => itemState.BatchNumber)
+                            </td>
+                            <td style="text-align:right;width:100px">
+                                @Html.ValueFor(modelItem => itemState.MTSMailed, "{0:MM/dd/yyyy}")
+                            </td>
+                            <td style="text-align:center;width:250px">
+                                @Html.DisplayFor(modelItem => itemState.Notes)
+                            </td>
+                        </tr>
+                    }
+                }
+            </table>
+            <table class="table" style="border:1px;background-color:#efeded;">
+                <tr>
+                    <th>
+                        Totals:
+                    </th>
+                    <th style="text-align:left;">
+                        $@Html.DisplayFor(x => x.RefundStateTotal.AmountSubmitted)
+                    </th>
+                    <th style="text-align:left;">
+                        $@Html.DisplayFor(x => x.RefundStateTotal.AmountPaid)
+                    </th>
+                    <th style="text-align:left;">
+                    </th>
+                    <th style="text-align:left;">
+                        $@Html.DisplayFor(x => x.RefundStateTotal.DeniedAdjusted)
+                    </th>
+                    <th style="text-align:left;">
+                        $@Html.DisplayFor(x => x.RefundStateTotal.BalanceAtState)
+                    </th>
+                    <th style="text-align:left;">
+
+                    </th>
+                    <th style="text-align:left;">
+
+                    </th>
+                </tr>
+            </table>
+            <div>Total+Refunds At State:  <b>$@Html.DisplayFor(x => x.RefundStateTotal.TotalRefundAtState)</b></div>
+        </div>
+    </div>
+</div>
+

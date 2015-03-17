@@ -1,0 +1,178 @@
+﻿@model IEnumerable<salt_web.Models.VendorsListViewModel>
+
+@{
+    ViewBag.Title = "Vendor Information";
+}
+
+<h2>Vendor Information</h2>
+@section scripts {
+    @*<script src="~/Scripts/controllers/vendor/VendorController.js"></script>*@
+
+
+    <script>
+        $(document).ready(function () {
+        $("#dt_vendor").dataTable({
+
+
+            "oLanguage": {
+                "sZeroRecords": "No records to display",
+                "sSearch": "Search on UserName"
+            },
+            'iDisplayLength': 10,
+            "lengthMenu": [ 5, 10, 20, 30, 50, 100 ],
+            "bSortClasses": false,
+            "bStateSave": false,
+            "bPaginate": true,
+            "bAutoWidth": false,
+            "bProcessing": true,
+            "bServerSide": true,
+            "bDestroy": true,
+            "sAjaxSource": "@Url.Action("GetAjaxData", "Vendor")",
+           "bJQueryUI": true,
+           "sPaginationType": "full_numbers",
+           "bDeferRender": true,
+            
+           "fnServerData": function (sSource, aoData, fnCallback) {
+               debugger;
+               $.ajax({
+                   "dataType": 'json',
+                   "contentType": "application/json; charset=utf-8",
+                   "type": "GET",
+                   "url": sSource,
+                   //"isArray": true,
+                   //'data': "aodata" || {},
+                   "data": aoData,
+                   "success":
+                               function (msg) {
+                                   debugger;
+                                   var json = jQuery.parseJSON(msg.d);
+                                   fnCallback(json);
+                                   $("#dt_vendor").show();
+                               }
+               });
+           }
+        
+        }); 
+
+        }); 
+    </script>
+ 
+
+<div class="container" >
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <h3 class="panel-heading">
+                    NEW Vendor Information
+                </h3>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="dt_vendor1">
+                            <table id="dt_vendor">
+                                <thead>
+                                    <tr>
+                                        <th>VendorCode</th>
+                                        <th>CompanyLegalName</th>
+                                        <th>PhoneNumber</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+    <!--gridview check history-->
+     
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <h3 class="panel-heading">
+                    Vendor Information
+                </h3>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="vendor">
+                            <table id="gvvendor" ng-gridview="gvvendor" data-resource="$vendor" >
+                                <thead>
+                                    <tr>
+                                        <th data-name="VendorCode" data-width="50">Vendor Code</th>
+                                        <th data-name="CompanyLegalName" data-width="75">Company Name</th>
+                                        <th data-name="PhoneNumber" data-width="160">Phone Number</th>
+                                        <th data-name="$options" data-width="160">Options</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>
+
+    <!--gridview check history-->
+
+        @*<div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <h3 class="panel-heading">
+                    test
+                </h3>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="test">
+                            <table id="test" ng-gridview="test" data-resource="$test" data-remote="https://itunes.apple.com/search?term=apple">
+                                <thead>
+                                    <tr>
+                                        <th data-name="collectionCensoredName" data-width="50">collectionCensoredName</th>
+                                        <th data-name="trackCensoredName" data-width="75">trackCensoredName</th>
+                                        <th data-name="trackCount" data-width="50">trackCount</th>
+                                        <th data-name="country" data-width="75">country</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+@*
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <h3 class="panel-heading">
+                    Vendor Information1
+                </h3>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="vendor1">
+                            <table id="vendor1" ng-gridview="vendor1" data-resource="$vendor" data-remote="/Vendor/GetVendorList">
+                                <thead>
+                                    <tr>
+                                        <th data-name="VendorCode" data-width="50">Vendor Code</th>
+                                        <th data-name="CompanyLegalName" data-width="75">Company Name</th>
+                                        <th data-name="PhoneNumber" data-width="160">Phone Number</th>
+                                        <th data-name="$options" data-width="160">Options</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+}
+</div>

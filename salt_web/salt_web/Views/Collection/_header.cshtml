@@ -1,0 +1,111 @@
+﻿@model salt_web.Models.BillingInformationViewModel
+<div class="col-xs-12">
+
+    <div class="panel panel-primary">
+        
+        <div class="panel-heading">
+            Client Info
+        </div>
+ 
+ 
+                
+                
+        <div class="panel-body">
+            <div class="col-xs-4">
+                         
+                <p><span class="strong">Job Code:</span>&nbsp @Html.DisplayFor(m => m.CompanyLegalName)</p>
+                <p><span class="strong">Acct Rep:</span><br /></p>
+                <p><span class="strong">Audiotor:</span>&nbsp @Html.DisplayFor(m => m.PhoneNumber)</p>
+                <p><span class="strong">Client:</span>&nbsp @Html.DisplayFor(m => m.PhoneNumber)</p>
+                <p><span class="strong">Rpt Date:</span>&nbsp @Html.DisplayFor(m => m.PhoneNumber)</p>
+                <p><span class="strong">Date Rcvd:</span>&nbsp @Html.DisplayFor(m => m.PhoneNumber)</p>
+                <p><span class="strong">Notes:</span><br /> this is a test &nbsp @Html.DisplayFor(m => m.PhoneNumber)</p>
+            </div>
+              
+            <div class="col-xs-4">
+                <table  >
+                    <tr class="panel-body" style="background-color: #800080; color: #FFFFFF; text-align: right;">
+                        <td><span class="strong">Waivers:</span>&nbsp</p></td>
+                        <td><span class="strong">Waivers:</span>&nbsp</p></td>
+                        <td><span class="strong">Waivers:</span>&nbsp</p></td>
+                    </tr>
+
+                    <tr class="panel-body" style="background-color: #008000; color: #FFFFFF; text-align: right;">
+                        <td><span class="strong">Check/Credit/Debit::</span>&nbsp</p></td>
+                        <td><span class="strong">Waivers:</span>&nbsp</p></td>
+                        <td><span class="strong">Waivers:</span>&nbsp</p></td>
+                    </tr>
+
+                    <tr class="panel-body" style="background-color: #00FFFF;  text-align: right;">
+                        <td><span class="strong">Mock Credit:</span>&nbsp</p></td>
+                        <td><span class="strong">Waivers:</span>&nbsp</p></td>
+                        <td><span class="strong">Waivers:</span>&nbsp</p></td>
+                    </tr>
+
+                    <tr class="panel-body" style="background-color: #C0C0C0; color: #FFFFFF; text-align: right;">
+                        <td><span class="strong">Write Off:</span>&nbsp</p></td>
+                        <td><span class="strong">Waivers:</span>&nbsp</p></td>
+                        <td><span class="strong">Waivers:</span>&nbsp</p></td>
+                    </tr>
+
+                    <tr class="panel-body" style="background-color: #FFCC66; color: #FFFFFF; text-align: right;">
+                        <td><span class="strong">No Vendor Credit:</span>&nbsp</p></td>
+                        <td><span class="strong">Waivers:</span>&nbsp</p></td>
+                        <td><span class="strong">Waivers:</span>&nbsp</p></td>
+                    </tr>
+
+                    <tr class="panel-body" style="background-color: #8DB3E2; color: #FFFFFF; text-align: right;">
+                        <td><span class="strong">Attention:</span>&nbsp</p></td>
+                        <td><span class="strong">1,080.83</span>&nbsp</p></td>
+                        <td><span class="strong">1,080.83</span>&nbsp</p></td>
+                    </tr>
+
+                    <tr class="panel-body" style=" text-align: right;">
+                        <td><span class="strong">Total Amount Collected:</span>&nbsp</p></td>
+                        <td><span class="strong">1,080.83</span>&nbsp</p></td>
+                        <td><span class="strong">1,080.83</span>&nbsp</p></td>
+                    </tr>
+
+                    <tr class="panel-body" style="text-align: right;">
+                        <td><span class="strong">% Job Complete:</span>&nbsp</p></td>
+                        <td><span class="strong">1,080.83</span>&nbsp</p></td>
+                        <td><span class="strong">1,080.83</span>&nbsp</p></td>
+                    </tr>
+                </table>
+
+            </div>
+
+            <div class="col-xs-4">
+                <p><span class="strong">Date Assigned:</span>&nbsp @Html.DisplayFor(m => m.PhoneNumber)</p>
+                <p><span class="strong">Assigned To:</span>&nbsp @Html.DisplayFor(m => m.PhoneNumber)</p>
+                <p><span class="strong">Date Pkt Faxed:</span>&nbsp @Html.DisplayFor(m => m.PhoneNumber)</p>
+                <p><span class="strong">Total Vendors:</span>&nbsp @Html.DisplayFor(m => m.PhoneNumber)</p>
+                <p><span class="strong">Last Call Date:</span>&nbsp @Html.DisplayFor(m => m.PhoneNumber)</p>
+                <p><span class="strong">Remaining:</span>&nbsp @Html.DisplayFor(m => m.PhoneNumber)</p>
+
+            </div>
+
+            <div class="col-xs-12" style="text-align: right;">
+               
+                <div class="form-group">
+                    <label class="col-xs-5 control-label"></label>
+                    <div class="col-xs-7">
+                        <input type="submit" value="Update Info" style="height:35px;width:75px;" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+ 
+        
+      
+    </div>
+
+
+
+    <div style="text-align:right">
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+    <br />
+</div>
+

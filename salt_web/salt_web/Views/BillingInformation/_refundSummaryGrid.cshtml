@@ -1,0 +1,134 @@
+﻿@model salt_web.Models.BillingInformationViewModel
+<div class="panel-body">
+    <div class="tab-content">
+        <div class="tab-pane active">
+            <table class="table">
+                <tr style="color:#3399f3">
+
+                    <th style="text-align:left;width:155px;">
+                        Vendor Name
+                    </th>
+                    <th style="text-align:right;width:100px">
+                        Tax Amount Idenfified
+                    </th>
+                    <th style="text-align:right;width:100px">
+                        Adjusted
+                    </th>
+                    <th style="text-align:right;width:100px">
+                        Collection Note
+                    </th>
+                    <th style="text-align:right;width:100px">
+                        Amount Recovered
+                    </th>
+                    <th style="text-align:right;width:100px">
+                        Batch Number
+                    </th>
+                    <th style="text-align:right;width:100px">
+                        Left To Recover
+                    </th>
+                    <th style="text-align:center;width:250px">
+                        Notes
+                    </th>
+
+                </tr>
+                @if (Model != null)
+                {
+                    foreach (var item in Model.RefundSummary)
+                    {
+                        <tr>
+                            <td>
+                                <div>
+                                    <ul class="nav nav-pills">
+                                        <li class="active">
+                                            <a data-toggle="tab">@item.RefCollections.FullName</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            @foreach (var items in item.RefCollections.RefundCollections)
+                            {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => items.VendorName)
+                                </td>
+                                <td style="text-align:right;width:100px">
+                                    @Html.DisplayFor(modelItem => items.TaxAmountIdentified)
+                                </td>
+                                <td style="text-align:right;width:100px">
+                                    @Html.DisplayFor(modelItem => items.Adjust)
+                                </td>
+                                <td style="text-align:right;width:100px">
+                                    @Html.DisplayFor(modelItem => items.AmountRecovered)
+                                </td>
+                                <td style="text-align:right;width:100px">
+                                    @Html.DisplayFor(modelItem => items.BatchNumber)
+                                </td>
+                                <td style="text-align:right;width:100px">
+                                    @Html.DisplayFor(modelItem => items.LeftToRecover)
+                                </td>
+                                <td style="text-align:right;width:100px">
+                                    @Html.DisplayFor(modelItem => items.CollectionNoteName)
+                                </td>
+                                <td style="text-align:center;width:100px">
+                                    @Html.DisplayFor(modelItem => items.Notes)
+                                </td>
+                            </tr>
+                            }
+                            </tr>
+                    }
+                }
+            </table>
+            <table class="table" style="border:1px;background-color:#efeded;">
+                <tr>
+                    <th style="width:125px;">
+                        Totals:
+                    </th>
+                    <th style="text-align:left;width:75px;">
+                        $@Html.DisplayFor(x => x.RefundSummaryTotal.TaxAmountIdentifiedSum)
+                    </th>
+                    <th style="text-align:left;width:75px;">
+                        $@Html.DisplayFor(x => x.RefundSummaryTotal.AdjustSum)
+                    </th>
+                    <th style="text-align:left;width:100px;">
+                    </th>
+                    <th style="text-align:left;width:100px;">
+                        $@Html.DisplayFor(x => x.RefundSummaryTotal.AmountReceivedSum)
+                    </th>
+                    <th style="text-align:left;width:100px;">
+                        @Html.DisplayFor(x => x.RefundSummaryTotal.BatchPercent)%
+                    </th>
+                    <th style="text-align:left;width:100px;">
+                        @Html.DisplayFor(x => x.RefundSummaryTotal.NotesPercent)%
+                    </th>
+                    <th style="text-align:left;width:100px;">
+                        $@Html.DisplayFor(x => x.RefundSummaryTotal.LeftToReceoverSum)
+                    </th>
+                </tr>
+            </table>
+
+            <div style="padding:10px 10px 20px 10px; background-color:#efeded;border:dotted;width:450px">
+                <p></p>
+                @using (Html.BeginForm("Create", "BillingInformation", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div>
+                        &nbsp;Credit Interest Reveived:&nbsp;&nbsp;  <b>
+                            $<input type="text" style="width: 100px" value="@Html.DisplayFor(x => x.CreditInterestRevieved)" name="creditInterestRevived" id="creditInterestRevived" />
+                            &nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Update" />
+                        </b><br />
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+

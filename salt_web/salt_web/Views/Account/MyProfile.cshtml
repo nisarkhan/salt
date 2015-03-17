@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "title";
+}
+
+
+@section scripts {
+    <script src="~/App_Scripts/Controllers/AccountController.js"></script>
+}
+
+<div class="container" ng-controller="AccountMyProfileCtrl" ng-init="init()">
+    <h2>@ViewBag.Title.</h2>
+     
+    <div class="row column full">
+        <form name="MyProfile" ng-submit="SubmitProfile(MyProfile.$valid)">
+
+            <div class="row">
+                <div class="column third">organization"]</div>
+                <div class="column two-thirds"><input ng-model="updateUser.OrganizationName" class="form-control" disabled /></div>
+            </div>
+
+            <div class="row">
+                <div class="column third"> firstname"]</div>
+                <div class="column two-thirds"><input ng-model="updateUser.FirstName" class="form-control" required /></div>
+            </div>
+
+            <div class="row">
+                <div class="column third"> lastname"]</div>
+                <div class="column two-thirds"><input ng-model="updateUser.LastName" class="form-control" required /></div>
+            </div>
+
+            <div class="row">
+                <div class="column third"> email"]</div>
+                <div class="column two-thirds"><input type="email" ng-model="updateUser.Email" class="form-control" required /></div>
+            </div>
+
+            <div class="break"></div>
+            <div class="row">
+                <div class="column full"><input type="submit" value="submit" class="btn btn-default" /></div>
+            </div>
+        </form>
+    </div>
+
+</div>

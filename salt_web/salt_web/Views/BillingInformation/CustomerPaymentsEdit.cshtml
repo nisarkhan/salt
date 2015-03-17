@@ -1,0 +1,138 @@
+﻿@model salt_web.Models.CustomerPaymentViewModel
+
+    @{
+
+    }
+    <div class="col-lg-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                Customer Payments
+            </div>
+
+            @if (TempData["message"] != null)
+            { @Html.Partial("~/Views/Shared/partial/_notification.cshtml");
+            }
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.ClientPKID)
+        <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-pills">
+                        <li class="active">
+                            <a href="#Business" data-toggle="tab">Customer Payments - Edit</a>
+                        </li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="Business">
+
+                            <div class="form-horizontal">
+                                <hr />
+
+
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <div class="form-group">
+                                            <label for="" class="col-xs-5 control-label">Check Number:</label>
+                                            <div class="col-xs-7">
+                                                @Html.EditorFor(m => m.CheckNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.CheckNumber, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <div class="form-group">
+                                            <label for="" class="col-xs-5 control-label">Prepay Amount:</label>
+                                            <div class="col-xs-7">
+                                                @Html.EditorFor(m => m.PrepayAmount, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.PrepayAmount, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <div class="form-group">
+                                            <label for="" class="col-xs-5 control-label">PrePay Credit:</label>
+                                            <div class="col-xs-7">
+                                                @Html.EditorFor(m => m.PrePayCredit, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.PrePayCredit, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <div class="form-group">
+                                            <label for="" class="col-xs-5 control-label">PrePay Balance:</label>
+                                            <div class="col-xs-7">
+                                                @Html.EditorFor(m => m.PrePayBalance, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
+                                                @Html.ValidationMessageFor(model => model.PrePayBalance, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <div class="form-group">
+                                            <label for="" class="col-xs-5 control-label">Applied to Balance Due:</label>
+                                            <div class="col-xs-7">
+                                                @Html.EditorFor(m => m.AppliedBalance, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.AppliedBalance, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <div class="form-group">
+                                            <label for="" class="col-xs-5 control-label">Batch Number:</label>
+                                            <div class="col-xs-7">
+                                                @Html.EditorFor(m => m.BatchNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.BatchNumber, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <div class="form-group">
+                                            <label for="" class="col-xs-5 control-label">Notes:</label>
+                                            <div class="col-xs-7">
+                                                @Html.TextAreaFor(m => m.Notes, 6, 80, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Notes, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row text-right">
+                                <div class="col-xs-12">
+                                    @Html.ActionLink("Back to List", "Edit", new { id = Model.ClientPKID })
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button class="btn btn-default" type="submit"> <i class="fa fa-save"></i> Save </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+            }
+        </div>
+    </div>

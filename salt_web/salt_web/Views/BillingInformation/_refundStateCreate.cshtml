@@ -1,0 +1,111 @@
+﻿@model salt_web.Models.BillingInformationViewModel
+<!--insert refund state... -->
+@using (Html.BeginForm("RefundStateCreate", "BillingInformation", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.ClientPKID)
+    <div class="panel-body">
+        <div class="tab-content">
+
+            <div class="form-horizontal">
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div class="form-group">
+                            <label for="" class="col-xs-5 control-label">Batch Description:</label>
+                            <div class="col-xs-7">
+                                @Html.EditorFor(m => m.RefundStateViewModel.BatchDescription, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.RefundStateViewModel.BatchDescription, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5">
+                        <div class="form-group">
+                            <label class="col-xs-5 control-label">Amount Submitted:</label>
+                            <div class="col-xs-7">
+                                @Html.EditorFor(m => m.RefundStateViewModel.AmountSubmitted, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.RefundStateViewModel.AmountSubmitted, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div class="form-group">
+                            <label class="col-xs-5 control-label">Amount Paid:</label>
+                            <div class="col-xs-7">
+                                @Html.EditorFor(m => m.RefundStateViewModel.AmountPaid, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.RefundStateViewModel.AmountPaid, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-5">
+                        <div class="form-group">
+                            <label for="" class="col-xs-5 control-label">Denied Adjusted:</label>
+                            <div class="col-xs-7">
+                                @Html.EditorFor(m => m.RefundStateViewModel.DeniedAdjusted, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.RefundStateViewModel.DeniedAdjusted, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div class="form-group">
+                            <label class="col-xs-5 control-label">Balance At State:</label>
+                            <div class="col-xs-7">
+                                @Html.EditorFor(m => m.RefundStateViewModel.BalanceState, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.RefundStateViewModel.BalanceState, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-5">
+                        <div class="form-group">
+                            <label class="col-xs-5 control-label">Batch Number:</label>
+                            <div class="col-xs-7">
+                                @Html.EditorFor(m => m.RefundStateViewModel.BatchNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.RefundStateViewModel.BatchNumber, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div class="form-group">
+                            <label class="col-xs-5 control-label">MTS Mailed:</label>
+                            <div class="col-xs-7">
+                                @Html.EditorFor(m => m.RefundStateViewModel.DateMTSMailed, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.RefundStateViewModel.DateMTSMailed, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-xs-5">
+                        <div class="form-group">
+                            <label class="col-xs-5 control-label">Notes:</label>
+                            <div class="col-xs-7">
+                                @Html.TextAreaFor(m => m.RefundStateViewModel.Notes, 6, 50, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.RefundStateViewModel.Notes, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-5">
+                        <div class="form-group">
+                            <label class="col-xs-5 control-label"></label>
+                            <div class="col-xs-7">
+                                <input type="submit" value="Insert" style="height:35px;width:75px;" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,100 @@
+﻿@model salt_web.Models.BillingInformationViewModel
+
+<!--insert future benefits... -->
+@using (Html.BeginForm("FutureBenefitsCreate", "BillingInformation", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.ClientPKID)
+    <div class="panel-body">
+        <div class="tab-content">
+
+            <div class="form-horizontal">
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div class="form-group">
+                            <label for="" class="col-xs-5 control-label">Installement:</label>
+                            <div class="col-xs-7">
+                                @Html.EditorFor(m => m.FutureBenefit.Installment, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.FutureBenefit.Installment, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-5">
+                        <div class="form-group">
+                            <label class="col-xs-5 control-label">Orginial Amount:</label>
+                            <div class="col-xs-7">
+                                @Html.EditorFor(m => m.FutureBenefit.OrginalAmount, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.FutureBenefit.OrginalAmount, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div class="form-group">
+                            <label class="col-xs-5 control-label">Adjust:</label>
+                            <div class="col-xs-7">
+                                @Html.EditorFor(m => m.FutureBenefit.Adjusted, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.FutureBenefit.Adjusted, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-5">
+                        <div class="form-group">
+                            <label for="" class="col-xs-5 control-label">Amount Recovered:</label>
+                            <div class="col-xs-7">
+                                @Html.EditorFor(m => m.FutureBenefit.AmountRecovered, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.FutureBenefit.AmountRecovered, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div class="form-group">
+                            <label class="col-xs-5 control-label">Collection Note:</label>
+                            <div class="col-xs-7">
+                                @Html.EditorFor(m => m.FutureBenefit.CollectionNote, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.FutureBenefit.CollectionNote, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-5">
+                        <div class="form-group">
+                            <label class="col-xs-5 control-label">Batch Number:</label>
+                            <div class="col-xs-7">
+                                @Html.EditorFor(m => m.FutureBenefit.BatchNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.FutureBenefit.BatchNumber, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-xs-5">
+                        <div class="form-group">
+                            <label class="col-xs-5 control-label">Notes:</label>
+                            <div class="col-xs-7">
+                                @Html.TextAreaFor(m => m.FutureBenefit.Notes, 6, 50, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.FutureBenefit.Notes, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-5">
+                        <div class="form-group">
+                            <label class="col-xs-5 control-label"></label>
+                            <div class="col-xs-7">
+                                <input type="submit" value="Insert" style="height:35px;width:75px;" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

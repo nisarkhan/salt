@@ -1,0 +1,62 @@
+﻿@model salt_web.Models.Collection.CollectionViewModel
+@using PagedList;
+
+@{ViewBag.Title = "Edit";}
+
+@section scripts {
+
+}
+
+@if (TempData["message"] != null)
+{ @Html.Partial("~/Views/Shared/partial/_notification.cshtml");
+}
+
+<div class="row">
+
+    @Html.Partial("~/Views/Collection/_header.cshtml", Model)
+   
+    <div class="panel-body">
+        <div class="tab-content">
+            <div class="tab-pane active">
+               
+                <table class="table">
+                    <tr>
+                        <th>Vendor</th>
+                        <th>Claim Amount</th>
+                        <th>Amount Received</th>
+                        <th>Type</th>
+                        <th>Amount Due</th>
+                        <th>Contact</th>
+                        <th>Phone #</th>
+                    </tr>
+
+                    @*@foreach (var item in ViewBag.OnePageOfData)
+                    {
+                        <tr>
+                            <td>
+                                @item.CompanyLegalName
+                            </td>
+                            <td>
+                                @item.ClientCode
+                            </td>
+                            <td>
+                                @item.PhoneNumber
+                            </td>
+
+
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.ClientPKID }) |
+                                &nbsp;@Html.ActionLink("New", "Create", new { id = item.ClientPKID }) |
+                                &nbsp;@Html.ActionLink("Collection", "Collection", new { id = item.ClientPKID }) |
+                                &nbsp;@Html.ActionLink("Vendor List", "VendorList", new { id = item.ClientPKID })
+                            </td>
+                        </tr>
+                    }*@
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+</div>

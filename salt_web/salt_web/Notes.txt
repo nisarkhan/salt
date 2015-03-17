@@ -1,0 +1,122 @@
+﻿1) 
+Uncheck allow nulls from the Vendor table
+
+Update table with this script:
+
+update vendors set TaxID = 0
+update vendors set MultiTaxID = 0
+update vendors set BillingAddressSame = 0
+update vendors set BillingContactSame = 0
+
+2)
+Rename column in Client from "3rdAuditor" to "Third3rdAuditor"
+
+3) MenuContractTypes:
+uncheck allow null
+set PrimaryKey on Code
+
+4) add primary key to menutravel tbl (travelid)
+
+5) add primary key to menurental tbl (rentailid)
+
+----SELECT top(10456) * 
+----  FROM [salt_db].[dbo].clients
+use salt_db
+
+
+select * from 
+
+update  [dbo].[aspnet_Membership]
+set failedpasswordattemptcount = 0
+where userid = '4C914EC9-01F0-4C8F-A6FD-C6C27BC84523'
+
+
+SELECT * FROM [aspnet_users] 
+where username = 'deb'
+
+
+
+SELECT customerid, typeofcontract FROM [Clients] 
+where typeofcontract = (select typeofcontract where typeofcontract = clients.typeofcontract)
+and customerid = '8156'
+go
+
+select * from MenuContractTypes
+
+SELECT [UserID], [LastName]+', '+[FirstName] AS LastFirst FROM [aspnet_Users] ORDER BY MenuAdminPosit, [LastName], [FirstName] ASC
+
+SELECT [VendorCode], [CompanyLegalName], [PhoneNumber] FROM [Vendors] order by [CompanyLegalName]
+SELECT FeeTerms,PrimarySalesStaff FROM [Clients] 
+
+where recordsaddress = '134 main st'
+
+
+order by [ClientCode]
+
+SELECT        TOP (100) PERCENT CompanyLegalName, PhoneNumber, VendorCode
+FROM            dbo.Vendors
+WHERE        (VendorCode IS NOT NULL) AND (CompanyLegalName <> '')
+ORDER BY CompanyLegalName
+
+
+SELECT  * FROM [Clients] 
+--where clientpkid = '4C914EC9-01F0-4C8F-A6FD-C6C27BC84523'
+
+--where customerid = 10345
+
+select * from [dbo].[aspnet_Users]
+where username = 'deb'
+
+
+select a.UserId, Password, PasswordAnswer 
+                       from dbo.aspnet_Users a
+                       join aspnet_Membership b on a.userid = b.userid
+                       where username = 'deb'
+
+
+select UserId,  UserName, FirstName, LastName, Email from aspnet_Users  a join aspnet_Membership b on a.userid = b.userid where isapproved = 1 order by username, firstname, lastname
+
+SELECT * FROM [Vendors] WHERE ([Vendorpkid] = '33add720-4e5b-4685-a511-03c4fab1250c')
+go
+use salt_db
+
+SELECT [VendorCode], [CompanyLegalName], [PhoneNumber], [vendorpkid] as VendorId FROM [Vendors] 
+where phonenumber='555-555-5555'
+
+order by [CompanyLegalName]
+
+
+where companylegalname = '%13 TONS LLC%'
+
+
+
+
+SELECT * FROM [Vendors] WHERE companylegalname = '%13 TONS%'
+
+
+update vendors set TaxID = 0
+update vendors set MultiTaxID = 0
+
+update vendors set BillingAddressSame = 0
+update vendors set BillingContactSame = 0
+
+update vendors set BillingAddressSame = 0
+update vendors set BillingContactSame = 0
+SELECT [VendorCode], [CompanyLegalName], [PhoneNumber], [vendorpkid] FROM [Vendors] 
+
+
+DECLARE @SQL VARCHAR(MAX)
+DECLARE @TableName NVARCHAR(128)
+SET @TableName = 'Vendor'
+
+SELECT @SQL = COALESCE(@SQL + ',[', '[') + 
+              COLUMN_NAME + ']=RTRIM([' + COLUMN_NAME + '])'
+FROM INFORMATION_SCHEMA.COLUMNS
+WHERE TABLE_NAME = @TableName
+    AND DATA_TYPE = 'varchar'
+
+SET @SQL = 'UPDATE [' + @TableName + '] SET ' + @SQL
+PRINT @SQL
+
+
+ 

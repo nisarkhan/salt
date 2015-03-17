@@ -1,0 +1,1616 @@
+﻿
+<!DOCTYPE html>
+<html ng-app="userApp">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit - Salt Application</title>
+
+
+
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/css/font-awesome.min.css" rel="stylesheet">
+
+
+    <link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/css/sunloan.css" rel="stylesheet">
+    <link href="/assets/css/sunloan.datatable.css" rel="stylesheet">
+    <link href="/assets/css/sunloan.datepicker.css" rel="stylesheet">
+    <link href="/assets/css/sunloan.animate.css" rel="stylesheet">
+
+
+    <script src="/Assets/js/vendor/jquery.min.js"></script>
+    <script src="/Assets/js/vendor/bootstrap.min.js"></script>
+
+
+
+
+
+
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Assets/css/custom-bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+
+
+    <sun-notification></sun-notification>
+
+
+    <!--header starts-->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a href="/">
+                    <img src='/images/logo.gif' style="width:75px;height:50px;" />
+                </a>
+            </div>
+
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Clients <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/User">User List</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/Client">Update Client</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/Client/Create">New Client</a></li>
+                            <li class="divider"></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Vendors <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Vendor">Update Vendor</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/Vendor/Create">New Vendor</a></li>
+                            <li class="divider"></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Employees <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/Employee/Create">New Employee</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/Employee">Employee List</a></li>
+                            <li class="divider"></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Job Tracking <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/JobTracking">Auditor Info</a></li>
+                            <li class="divider"></li>
+
+
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Data Entry <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/BillingInformation">Billing Statements</a></li>
+                            <li class="divider"></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Working Web <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/NewRequest/Create">New Request</a></li>
+                            <li class="divider"></li>
+                            <li><a href="/NewRequest">Request Request</a></li>
+                            <li class="divider"></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Report <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Reports</a></li>
+                            <li class="divider"></li>
+
+                            <li><a href="#">Report Info</a></li>
+                        </ul>
+                    </li>
+
+
+                </ul>
+                <!--Html.Partial("_LoginPartial")-->
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+    <div class="container body-content">
+
+
+
+
+
+
+        <div class="row">
+            <br />
+            <div class="col-xs-12">
+
+                <div class="panel panel-primary">
+
+                    <div class="panel-heading">
+                        Collection Info
+                    </div>
+
+
+
+                    <div class="panel-body">
+                        <div class="col-xs-4">
+
+                            <p><span class="strong">Job Code:</span>&nbsp </p>
+                            <p><span class="strong">Acct Rep:</span>&nbsp </p>
+                            <p><span class="strong">Audiotor:</span>&nbsp Brian Boerner</p>
+                            <p><span class="strong">Client:</span>&nbsp SHARE CORP</p>
+                            <p><span class="strong">Rpt Date:</span>&nbsp 6/27/2012 12:00:00 AM</p>
+                            <p><span class="strong">Date Rcvd:</span>&nbsp 7/6/2012 12:00:00 AM</p>
+                            <p><span class="strong">Notes:</span><br /> this is a test &nbsp All of 2006-2009 were removed due to appeal denial. No POA, client has to approve report before signing POA</p>
+                        </div>
+
+                        <div class="col-xs-4">
+                            <table>
+                                <tr class="panel-body" style="background-color: #800080; color: #FFFFFF; text-align: right;">
+                                    <td><span class="strong">Waivers:</span>&nbsp</td>
+                                    <td><span class="strong">Waivers:</span>&nbsp</td>
+                                    <td><span class="strong">Waivers:</span>&nbsp</td>
+                                </tr>
+
+                                <tr class="panel-body" style="background-color: #008000; color: #FFFFFF; text-align: right;">
+                                    <td><span class="strong">Check/Credit/Debit::</span>&nbsp</td>
+                                    <td><span class="strong">Waivers:</span>&nbsp</td>
+                                    <td><span class="strong">Waivers:</span>&nbsp</td>
+                                </tr>
+
+                                <tr class="panel-body" style="background-color: #00FFFF;  text-align: right;">
+                                    <td><span class="strong">Mock Credit:</span>&nbsp</td>
+                                    <td><span class="strong">Waivers:</span>&nbsp</td>
+                                    <td><span class="strong">Waivers:</span>&nbsp</td>
+                                </tr>
+
+                                <tr class="panel-body" style="background-color: #C0C0C0; color: #FFFFFF; text-align: right;">
+                                    <td><span class="strong">Write Off:</span>&nbsp</td>
+                                    <td><span class="strong">Waivers:</span>&nbsp</td>
+                                    <td><span class="strong">Waivers:</span>&nbsp</td>
+                                </tr>
+
+                                <tr class="panel-body" style="background-color: #FFCC66; color: #FFFFFF; text-align: right;">
+                                    <td><span class="strong">No Vendor Credit:</span>&nbsp</td>
+                                    <td><span class="strong">Waivers:</span>&nbsp</td>
+                                    <td><span class="strong">Waivers:</span>&nbsp</td>
+                                </tr>
+
+                                <tr class="panel-body" style="background-color: #8DB3E2; color: #FFFFFF; text-align: right;">
+                                    <td><span class="strong">Attention:</span>&nbsp</td>
+                                    <td><span class="strong">1,080.83</span>&nbsp</td>
+                                    <td><span class="strong">1,080.83</span>&nbsp</td>
+                                </tr>
+
+                                <tr class="panel-body" style=" text-align: right;">
+                                    <td><span class="strong">Total Amount Collected:</span>&nbsp</td>
+                                    <td><span class="strong">1,080.83</span>&nbsp</td>
+                                    <td><span class="strong">1,080.83</span>&nbsp</td>
+                                </tr>
+
+                                <tr class="panel-body" style="text-align: right;">
+                                    <td><span class="strong">% Job Complete:</span>&nbsp</td>
+                                    <td><span class="strong">1,080.83</span>&nbsp</td>
+                                    <td><span class="strong">1,080.83</span>&nbsp</td>
+                                </tr>
+                            </table>
+
+                        </div>
+
+                        <div class="col-xs-4">
+                            <p><span class="strong">Date Assigned:</span>&nbsp 7/9/2012 12:00:00 AM</p>
+                            <p><span class="strong">Assigned To:</span>&nbsp Deadra Grandazzo</p>
+                            <p><span class="strong">Date Pkt Faxed:</span>&nbsp 10/26/2012 12:00:00 AM</p>
+                            <p><span class="strong">Total Vendors:</span>&nbsp </p>
+                            <p><span class="strong">Last Call Date:</span>&nbsp 5/22/2013 12:00:00 AM</p>
+                            <p><span class="strong">Remaining:</span>&nbsp </p>
+
+                        </div>
+
+                        <div class="col-xs-12" style="text-align: right;">
+                            <div class="form-group">
+                                <label class="col-xs-5 control-label"></label>
+                                <div class="col-xs-7">
+                                    <input type="submit" value="Update Info" style="height:35px;width:75px;" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div style="text-align:right">
+                    <a href="/BillingInformation">Back to List</a>
+                </div>
+
+            </div>
+
+
+            <br />
+            <div class="col-xs-12">
+
+                <br />
+                <div class="panel panel-primary">
+
+                    <div class="panel-heading">
+                        Collection Info
+                    </div>
+                    <br />
+
+
+                    <div class="panel-body">
+                        <div class="tab-content">
+                            <div class="tab-pane active">
+
+                                <table class="table">
+                                    <tr>
+                                        <th>Vendor</th>
+                                        <th>Claim Amount</th>
+                                        <th>Amount Received</th>
+                                        <th>Type</th>
+                                        <th>Amount Due</th>
+                                        <th>Contact</th>
+                                        <th>Phone #</th>
+                                    </tr>
+
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Rep</th>
+                                        <th>Notes</th>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            Difference in State Check
+                                        </td>
+                                        <td>
+                                            0.00
+                                        </td>
+                                        <td>
+                                            -382.19
+                                        </td>
+                                        <td>
+                                            <select class="form-control" data-val="true" data-val-required="The Value field is required." id="item_Type_Value" name="item.Type.Value">
+                                                <option selected="selected" value="c6edd5bc-c5ef-4a56-8db2-17905d98c823">--None--</option>
+                                                <option value="0b4a44d0-7241-422d-935b-d0606b9c5ce1">Attn</option>
+                                                <option value="a1341e3c-afb7-4c47-8040-d33bdf82493b">$$$</option>
+                                                <option value="09fcf22d-cb51-4c0d-905a-73de5eb5af5b">Mock</option>
+                                                <option value="5fc81267-22f6-4e0d-bedc-36ddadedf38e">NVC</option>
+                                                <option value="2724cf4f-0cea-4b0c-949c-079ef06bfc37">W/O</option>
+                                                <option value="d59aae16-f623-43f0-83cb-d87056f5c2e0">Waiver</option>
+                                            </select>
+
+                                            <p />
+                                            <div class="col-xs-12" style="text-align: right;">
+                                                <div class="form-group">
+                                                    <label class="col-xs-5 control-label"></label>
+                                                    <div class="col-xs-7">
+                                                        <input type="submit" value=" Update " style="height:35px;width:75px;" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            0.00
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                            999-999-9999
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <textarea cols="80" htmlattributes="{ class = form-control }" id="Notes" name="Notes" rows="6"></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            AMERIGAS
+                                        </td>
+                                        <td>
+                                            157.60
+                                        </td>
+                                        <td>
+                                            157.60
+                                        </td>
+                                        <td>
+                                            <select class="form-control" id="item_Type_Value" name="item.Type.Value">
+                                                <option value="c6edd5bc-c5ef-4a56-8db2-17905d98c823">--None--</option>
+                                                <option value="0b4a44d0-7241-422d-935b-d0606b9c5ce1">Attn</option>
+                                                <option selected="selected" value="a1341e3c-afb7-4c47-8040-d33bdf82493b">$$$</option>
+                                                <option value="09fcf22d-cb51-4c0d-905a-73de5eb5af5b">Mock</option>
+                                                <option value="5fc81267-22f6-4e0d-bedc-36ddadedf38e">NVC</option>
+                                                <option value="2724cf4f-0cea-4b0c-949c-079ef06bfc37">W/O</option>
+                                                <option value="d59aae16-f623-43f0-83cb-d87056f5c2e0">Waiver</option>
+                                            </select>
+
+                                            <p />
+                                            <div class="col-xs-12" style="text-align: right;">
+                                                <div class="form-group">
+                                                    <label class="col-xs-5 control-label"></label>
+                                                    <div class="col-xs-7">
+                                                        <input type="submit" value=" Update " style="height:35px;width:75px;" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            157.60
+                                        </td>
+                                        <td>
+                                            Bobbi Hartung
+                                        </td>
+                                        <td>
+                                            610-768-7402
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            05/23/13
+                                        </td>
+                                        <td>
+                                            deadra1
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;TIM EM BK THAT CK WAS MAILED TO CLIENT ON 4/5/13 AND CASHED ON 5/7/13. I GAVE ST DIR CK TO DEB FOR BILLINGS&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            05/22/13
+                                        </td>
+                                        <td>
+                                            deadra1
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;EMAILED TIM W/ THE AMERIGAS LOG FOR 5/2013. I REQUESTED HE EITHER SEND BK REFUND DETAILS OR THE WI SCHEDULE P&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            05/21/13
+                                        </td>
+                                        <td>
+                                            deadra1
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;WILL FOLLOW - UP WITH TIM 5/22/13 WHEN I SEND THE AMERIGAS LOG&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            04/19/13
+                                        </td>
+                                        <td>
+                                            deadra1
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;AMERIGAS LOG WAS EM TO TIM, W/ RQST FOR STATUS ON REFUND&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            03/25/13
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;EM TIM FOR STATUS&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            03/19/13
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;EM TIM FOR UPDATE&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            03/19/13
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p class=&quot;MsoNormal&quot; style=&quot;margin: 0in 0in 0pt;&quot;&gt;&lt;span style=&quot;font-family: &#39;Arial&#39;,&#39;sans-serif&#39;; color: black; font-size: 10pt; mso-themecolor: text1;&quot;&gt;&amp;nbsp;03/11 &amp;ndash; EM FROM TIM; HE IS STILL WAITING FOR REPORT FROM IT. ONCE HE GETS THE SECOND PORTION OF THE REPORTING HE CAN COMBINE BOTH RPTS AND SEND IT OFF TO HIS MGR FOR APPROVAL.&lt;/span&gt;&lt;/p&gt;
+                                            &lt;p class=&quot;MsoNormal&quot; style=&quot;margin: 0in 0in 0pt;&quot;&gt;&lt;span style=&quot;font-family: &#39;Arial&#39;,&#39;sans-serif&#39;; color: black; font-size: 10pt; mso-themecolor: text1;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            03/11/13
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;EM TIM FOR STATUS OF REFUND RQST&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            02/18/13
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p class=&quot;MsoNormal&quot; style=&quot;margin: 0in 0in 0pt;&quot;&gt;&lt;span style=&quot;font-family: &#39;Arial&#39;,&#39;sans-serif&#39;; font-size: 10pt;&quot;&gt;EMAIL FROM TIM, STD; &amp;ldquo;I AM WORKING ON REFUNDS. SINCE I AM JUST LEARNING THIS PROCESS I HAVE TO MEET WITH JEFF O&amp;rdquo;FLYNN TO MAKE SURE I HAVE DONE THE PROCESS CORRECTLY BEFORE WE CUT A CHECK FOR YOUR CUSTOMER. I SHOULD HAVE CKS READY TO BE CUT FRIDAY FOR ALL REFUNDS&amp;rdquo;.&lt;/span&gt;&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            02/15/13
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;EMAILED VP TO TIM AT &lt;a href=&quot;mailto:tim.fantasia@amerigas.com&quot;&gt;tim.fantasia@amerigas.com&lt;/a&gt; AS HE IS THE NEW ACCOUNTANT THAT WILL BE HANDLING THIS RQST&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            02/15/13
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;EMAILED JEFF FOR AN UPDATE ON THE ACCOUNTANT THAT HAS BEEN ASSIGNED TO THIS RQST SO I CAN CONTACT THEM FOR AN UPDATE ON THIS RQST.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            02/05/13
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;SPOKE W/ JEFF, HE REC&#39;D MY EMAIL AND WILL COPY THE ACCOUNTANT AND ASK FOR AN UPDATE.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            02/04/13
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;SENT EMAIL TO JEFF ASKING FOR A STATUS ON THE TRAINING FOR THE NEW ACCOUNTANTS.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            01/25/13
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p class=&quot;MsoNormal&quot; style=&quot;margin: 0in 0in 0pt;&quot;&gt;&lt;span style=&quot;font-family: &#39;Arial&#39;,&#39;sans-serif&#39;; font-size: 10pt;&quot;&gt;EM FROM JEFF; HE IS TRAINING TWO NEW EMPLOYEES ON MONDAY ON HOW TO DO THE REFUND. THEY SHOULD HAVE ALL THE REFUNDS UPDATED BY NEXT FRIDAY; I CAN CONTACT HIM ON 02/01 FOR AN UPDATE. HOPEFULLY THE RQST WILL BE APPRV&amp;rsquo;D AND IN THE HANDS OF THE AP DEPT. FOR DISBURSEMENT FOR THE REFUND CK.&lt;/span&gt;&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            01/25/13
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;EMAILED JEFF TO SEE IF THIS ACCOUNT HAS BEEN ASSIGNED YET.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            01/11/13
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;Per Jeff O&#39;Flynn, Sean is no longer with Amerigas and asked me to contact him after 1/23, hopefully he will be able to give me a time frame on the rqst&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            01/03/13
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;EM SEAN FOR STATU OF REFUND RQST&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            12/21/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;EM SEAN, ASKED IF HE HAD ANY QUESTIONS OR NEEDED ANYTHING ELSE FROM US.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            12/07/12
+                                        </td>
+                                        <td>
+                                            deadra1
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;JEFF EMAILED BK TO FWD THE RQST TO SEAN DALY - &lt;a href=&quot;mailto:SEAN.DALY@AMERIGAS.COM&quot;&gt;SEAN.DALY@AMERIGAS.COM&lt;/a&gt; PHl 610.327.7000 EXT 1399. I SENT QUICK EMAIL TO SEAN EXPLAINING THE LOG.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            12/07/12
+                                        </td>
+                                        <td>
+                                            deadra1
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;EMAILED AMERIGAS LOG TO JEFF O&#39;FLYNN. RQSTD HE REVIEW AND SEND BACK THE WI WAIVER.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            11/30/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;Waitng for DG to submit log to vendor.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            11/16/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;Per DG do not contact vendor until log has been sent to Amerigas.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            11/07/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;DG will send to Jeff w/log for Nov.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            10/26/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;VP and Spreadsheet saved to Amerigas Log.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <textarea cols="80" htmlattributes="{ class = form-control }" id="Notes" name="Notes" rows="6"></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            GRAFIX PLUS
+                                        </td>
+                                        <td>
+                                            14.52
+                                        </td>
+                                        <td>
+                                            14.52
+                                        </td>
+                                        <td>
+                                            <select class="form-control" id="item_Type_Value" name="item.Type.Value">
+                                                <option value="c6edd5bc-c5ef-4a56-8db2-17905d98c823">--None--</option>
+                                                <option value="0b4a44d0-7241-422d-935b-d0606b9c5ce1">Attn</option>
+                                                <option selected="selected" value="a1341e3c-afb7-4c47-8040-d33bdf82493b">$$$</option>
+                                                <option value="09fcf22d-cb51-4c0d-905a-73de5eb5af5b">Mock</option>
+                                                <option value="5fc81267-22f6-4e0d-bedc-36ddadedf38e">NVC</option>
+                                                <option value="2724cf4f-0cea-4b0c-949c-079ef06bfc37">W/O</option>
+                                                <option value="d59aae16-f623-43f0-83cb-d87056f5c2e0">Waiver</option>
+                                            </select>
+
+                                            <p />
+                                            <div class="col-xs-12" style="text-align: right;">
+                                                <div class="form-group">
+                                                    <label class="col-xs-5 control-label"></label>
+                                                    <div class="col-xs-7">
+                                                        <input type="submit" value=" Update " style="height:35px;width:75px;" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            14.52
+                                        </td>
+                                        <td>
+                                            Ms Kris
+                                        </td>
+                                        <td>
+                                            262-675-0855
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            12/21/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;Ck#12655 for $14.52 processed by AR on 12/10&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            12/07/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;12/03- rec&#39;d em from Kris, std ck#12655 for $14.52 issued to Athea Lab and mailed to Salt.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            11/30/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;EM Kris to confirm receipt of the VP and for status.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            11/16/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;Emailed VP to Kris again.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            11/16/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;Spoke w/Jarret who is relaying msgs for Kris. Std that the VP was lost and asked that it be resent again, I asked for a name and email address to send it directly to, but he gave me the same name and email address.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            11/07/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;Spoke w/Jarrett who in turn spoke w/Kris, std she is waiting to hear back from the accountant and will let me know when she gets everything taken care of.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            10/31/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;Spoke w/ Kris, she hass all the information and will be processing it in a couple of days.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            10/26/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;EM VP to &lt;a href=&quot;mailto:sales@grafixp.com&quot;&gt;sales@grafixp.com&lt;/a&gt;.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <textarea cols="80" htmlattributes="{ class = form-control }" id="Notes" name="Notes" rows="6"></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            PRAXAIR DISTRIBUTION INC
+                                        </td>
+                                        <td>
+                                            908.71
+                                        </td>
+                                        <td>
+                                            908.71
+                                        </td>
+                                        <td>
+                                            <select class="form-control" id="item_Type_Value" name="item.Type.Value">
+                                                <option value="c6edd5bc-c5ef-4a56-8db2-17905d98c823">--None--</option>
+                                                <option value="0b4a44d0-7241-422d-935b-d0606b9c5ce1">Attn</option>
+                                                <option selected="selected" value="a1341e3c-afb7-4c47-8040-d33bdf82493b">$$$</option>
+                                                <option value="09fcf22d-cb51-4c0d-905a-73de5eb5af5b">Mock</option>
+                                                <option value="5fc81267-22f6-4e0d-bedc-36ddadedf38e">NVC</option>
+                                                <option value="2724cf4f-0cea-4b0c-949c-079ef06bfc37">W/O</option>
+                                                <option value="d59aae16-f623-43f0-83cb-d87056f5c2e0">Waiver</option>
+                                            </select>
+
+                                            <p />
+                                            <div class="col-xs-12" style="text-align: right;">
+                                                <div class="form-group">
+                                                    <label class="col-xs-5 control-label"></label>
+                                                    <div class="col-xs-7">
+                                                        <input type="submit" value=" Update " style="height:35px;width:75px;" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            908.71
+                                        </td>
+                                        <td>
+                                            (DONT CHANGE INFO) Attn: Tax Department
+                                        </td>
+                                        <td>
+                                            515-965-6698
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            01/28/13
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;EM FROM CANDIANN THAT SHE IS WORKING ON THE RQST AND WILL TRY TO GET IT DONE 01/29&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            01/25/13
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;EM CANDIANN FOR STATUS&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            01/17/13
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;EM FROM CANDIANN STATING NO RESPONSE FOR TAX DEPT YET&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            01/17/13
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;EMAILED CANDIANN FOR STATUS&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            01/11/13
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;Per email from Candiann, the rqst is still in process.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            01/11/13
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;EMAILED CANDIANN FOR STATUS&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            01/07/13
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p class=&quot;MsoNormal&quot; style=&quot;margin: 0in 0in 10pt;&quot;&gt;&lt;span style=&quot;line-height: 115%; font-family: &#39;Arial&#39;,&#39;sans-serif&#39;; color: black; font-size: 10pt; mso-themecolor: text1;&quot;&gt;EM FROM CANDIANN STATING THE REFUND RQST IS IN PROCESS.&lt;/span&gt;&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            01/03/13
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;EM CANDIANN FOR STATUR OF REFUND RQST.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            12/21/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;EM Candiann for status of refund request.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            12/03/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;Rec&#39;d em from Canadian Sorenson &quot; The credit refund in your request is currently n processing and will be processed as soon as possible&quot;.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            11/30/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;EM Tax Team for status of refund request.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            11/16/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;Spoke w/Candi, request is still in process and will send me notice when the credit is issued.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            11/07/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;Spoke w/Candi, has everthing she needs and will be issuing a Credit to the client and follow up with credit memo to me when this is done.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            10/31/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;Spoke w/Candi and she has the Vp, but it wasn&#39;t dated. I have dated the exemption certificate and emailed back to her for processing.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            10/26/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;EM VP and Spreadsheet to &lt;a href=&quot;mailto:pdisalestax@praxair.com&quot;&gt;pdisalestax@praxair.com&lt;/a&gt;&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <textarea cols="80" htmlattributes="{ class = form-control }" id="Notes" name="Notes" rows="6"></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            OTHER
+                                        </td>
+                                        <td>
+                                            0.00
+                                        </td>
+                                        <td>
+                                            0.00
+                                        </td>
+                                        <td>
+                                            <select class="form-control" id="item_Type_Value" name="item.Type.Value">
+                                                <option value="c6edd5bc-c5ef-4a56-8db2-17905d98c823">--None--</option>
+                                                <option value="0b4a44d0-7241-422d-935b-d0606b9c5ce1">Attn</option>
+                                                <option value="a1341e3c-afb7-4c47-8040-d33bdf82493b">$$$</option>
+                                                <option value="09fcf22d-cb51-4c0d-905a-73de5eb5af5b">Mock</option>
+                                                <option selected="selected" value="5fc81267-22f6-4e0d-bedc-36ddadedf38e">NVC</option>
+                                                <option value="2724cf4f-0cea-4b0c-949c-079ef06bfc37">W/O</option>
+                                                <option value="d59aae16-f623-43f0-83cb-d87056f5c2e0">Waiver</option>
+                                            </select>
+
+                                            <p />
+                                            <div class="col-xs-12" style="text-align: right;">
+                                                <div class="form-group">
+                                                    <label class="col-xs-5 control-label"></label>
+                                                    <div class="col-xs-7">
+                                                        <input type="submit" value=" Update " style="height:35px;width:75px;" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            0.00
+                                        </td>
+                                        <td></td>
+                                        <td>
+                                            999-999-9999
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <textarea cols="80" htmlattributes="{ class = form-control }" id="Notes" name="Notes" rows="6"></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            FUJIFILM NORTH AMERIA CORP
+                                        </td>
+                                        <td>
+                                            68.28
+                                        </td>
+                                        <td>
+                                            75.03
+                                        </td>
+                                        <td>
+                                            <select class="form-control" id="item_Type_Value" name="item.Type.Value">
+                                                <option value="c6edd5bc-c5ef-4a56-8db2-17905d98c823">--None--</option>
+                                                <option value="0b4a44d0-7241-422d-935b-d0606b9c5ce1">Attn</option>
+                                                <option value="a1341e3c-afb7-4c47-8040-d33bdf82493b">$$$</option>
+                                                <option value="09fcf22d-cb51-4c0d-905a-73de5eb5af5b">Mock</option>
+                                                <option value="5fc81267-22f6-4e0d-bedc-36ddadedf38e">NVC</option>
+                                                <option value="2724cf4f-0cea-4b0c-949c-079ef06bfc37">W/O</option>
+                                                <option selected="selected" value="d59aae16-f623-43f0-83cb-d87056f5c2e0">Waiver</option>
+                                            </select>
+
+                                            <p />
+                                            <div class="col-xs-12" style="text-align: right;">
+                                                <div class="form-group">
+                                                    <label class="col-xs-5 control-label"></label>
+                                                    <div class="col-xs-7">
+                                                        <input type="submit" value=" Update " style="height:35px;width:75px;" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            68.28
+                                        </td>
+                                        <td>
+                                            Connie Quick
+                                        </td>
+                                        <td>
+                                            800-621-1049
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            04/03/13
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;SIGNED SCHEDULE P REC&#39;D AND FILE IN CLIENT DOCUMENTS&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            03/25/13
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;EM CARYLY AND JILL ASKING THEM TO COMPLETE THE SCHEDULE P&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            03/19/13
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;EM CONNIE AND COPIED CARYL FOR UPDATE OR SIGN AND RETURN THE SCHEDULE P&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            03/11/13
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;SPOKE W/ CONNIE, SHE ASKED ME TO EMAIL HER THE RQST AND SHE WILL GIVE IT TO CARYL&#39;S MANAGER TO TAKE CARE OF&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            02/21/13
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;EMAILED WENDY AGAIN ASKING HER TO SIGN AND RETURN THE SCHEDULE P&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            02/15/13
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;EMAILED WENDY FOR STATUS OF THE SCHEDULE P OR REFUND&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            02/05/13
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p class=&quot;MsoNormal&quot; style=&quot;margin: 0in 0in 0pt;&quot;&gt;&lt;span style=&quot;font-family: &#39;Arial&#39;,&#39;sans-serif&#39;; font-size: 10pt;&quot;&gt;I CALLED CARYL TO ASK IF WENDY&amp;rsquo;S EM WAS DIRECTED TO ME OR HER, SHE STD IT WAS FOR HER AND SHE ALREADY SENT EVERYTHING BACK TO HER. SHE ALSO ASKED THAT I CONTACT WENDY DIRECT FOR STATUS.&lt;/span&gt;&lt;/p&gt;
+                                            &lt;p class=&quot;MsoNormal&quot; style=&quot;margin: 0in 0in 0pt;&quot;&gt;&lt;span style=&quot;font-family: &#39;Arial&#39;,&#39;sans-serif&#39;; font-size: 10pt;&quot;&gt;WENDY COPIED ME ON EM TO CARYL STD; &amp;ldquo;THIS CUSTOMER DOES NOT APPEAR ON THE SPREADSHEET OF OPEN INVOICES FOR PENDING CREDITS, SO COULD IT BE POSSIBLE THAT THIS HAS BEEN WRITTEN OFF ALREADY&amp;rdquo;? &amp;ldquo;IF THE CUSTOMER IS STILL PENDING TAX CREDITS, PLEASE PREPARE COVER SHEET AND I WILL SUBMIT TO AR FOR TAX WRITE OFF&amp;rdquo;&amp;rsquo;&lt;/span&gt;&lt;/p&gt;
+                                            &lt;p class=&quot;MsoNormal&quot; style=&quot;margin: 0in 0in 0pt;&quot;&gt;&lt;span style=&quot;font-family: &#39;Arial&#39;,&#39;sans-serif&#39;; font-size: 10pt;&quot;&gt;CARYL COPIED ME ON EM TO WENDY TO PLEASE LET US KNOW WHERE THEY ARE ON THE REFUND RQST.&lt;/span&gt;&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            02/04/13
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;EMAILED CARYL FOR UPDATE OF REFUND RQST&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            01/25/13
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;EMAILED CARYL FOR STATUS OF REFUND RQST&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            01/17/13
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;SPOKE W/CARYL, SHE FORWARDED EVERYTHING ON TO THE TAX DEPT., BUT REFUSES TO GIVE ME THE DIRECT NUMBER TO CONTACT THEM. I TOLD HER THAT I WILL BE CALLING HER WEEKLY FOR STATUS BECAUSE I DO NOT HAVE ANY OTHER NUMBER TO CALL.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            01/11/13
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;EMAILED CARYL FOR STATUS OF REFUND RQST&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            01/03/13
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;EM CARYL FOR STATUS OF REFUND RQST.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            12/21/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;EM FROM CARYL &quot;I SENT HER AN EMAIL, SHE IS OUT UNTIL NEXT WED&quot;&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            12/21/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;REC&#39;D EM FROM CARYL THAT THIS REQUEST IS NOW IN THE HANDS OF THE TAX DEPT. EM HER BACK ASKING IF I NEED TO CONTACT THAT DEPT DIRECTLY.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            12/21/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;Emailed Caryl to ask if the Schedule P had been signed.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            12/07/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;Spoke w/Denise, stad I would have to speak with Caryl and she will be back in on Tues 12/11.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            11/30/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;EM Caryl for status of refund request.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            11/16/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;Spoke w/Caryl, std the information is still pending because of the backlog and they only have one person handling all 50 states. Told her I would check back in a wk, she asked that I ck back in 3-2 weeks.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            11/07/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;Too soon to call.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            10/31/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;Spoke w/Caryl, std the information was forwarded on the the tax dept and due to the backlog and the fact they work on a first come first serve basis it will be a couple of weeks before she knows anything and asked me to call back then.&amp;nbsp;&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            10/26/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;Rec&#39;d em from Connie stating she had forwarded my request to&amp;nbsp; Caryl Schmidt &lt;a href=&quot;mailto:cschmidt@fujifilm.com&quot;&gt;cschmidt@fujifilm.com&lt;/a&gt;.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            10/26/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;EM VP to &lt;a href=&quot;mailto:Cquick@fujifilm.com&quot;&gt;Cquick@fujifilm.com&lt;/a&gt;.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <textarea cols="80" htmlattributes="{ class = form-control }" id="Notes" name="Notes" rows="6"></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            HACH COMPANY
+                                        </td>
+                                        <td>
+                                            82.09
+                                        </td>
+                                        <td>
+                                            82.09
+                                        </td>
+                                        <td>
+                                            <select class="form-control" id="item_Type_Value" name="item.Type.Value">
+                                                <option value="c6edd5bc-c5ef-4a56-8db2-17905d98c823">--None--</option>
+                                                <option value="0b4a44d0-7241-422d-935b-d0606b9c5ce1">Attn</option>
+                                                <option value="a1341e3c-afb7-4c47-8040-d33bdf82493b">$$$</option>
+                                                <option value="09fcf22d-cb51-4c0d-905a-73de5eb5af5b">Mock</option>
+                                                <option value="5fc81267-22f6-4e0d-bedc-36ddadedf38e">NVC</option>
+                                                <option value="2724cf4f-0cea-4b0c-949c-079ef06bfc37">W/O</option>
+                                                <option selected="selected" value="d59aae16-f623-43f0-83cb-d87056f5c2e0">Waiver</option>
+                                            </select>
+
+                                            <p />
+                                            <div class="col-xs-12" style="text-align: right;">
+                                                <div class="form-group">
+                                                    <label class="col-xs-5 control-label"></label>
+                                                    <div class="col-xs-7">
+                                                        <input type="submit" value=" Update " style="height:35px;width:75px;" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            82.09
+                                        </td>
+                                        <td>
+                                            Barb Schurman
+                                        </td>
+                                        <td>
+                                            800-227-4224  X6306
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            10/30/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;***Hach Company***&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            10/30/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;Rec&#39;d waiver from Barb Schurman.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            10/26/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;EM VP to &lt;a href=&quot;mailto:bschurman@hach.com&quot;&gt;bschurman@hach.com&lt;/a&gt;&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <textarea cols="80" htmlattributes="{ class = form-control }" id="Notes" name="Notes" rows="6"></textarea>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            WE ENERGIES
+                                        </td>
+                                        <td>
+                                            1,594.15
+                                        </td>
+                                        <td>
+                                            1,594.15
+                                        </td>
+                                        <td>
+                                            <select class="form-control" id="item_Type_Value" name="item.Type.Value">
+                                                <option value="c6edd5bc-c5ef-4a56-8db2-17905d98c823">--None--</option>
+                                                <option value="0b4a44d0-7241-422d-935b-d0606b9c5ce1">Attn</option>
+                                                <option value="a1341e3c-afb7-4c47-8040-d33bdf82493b">$$$</option>
+                                                <option value="09fcf22d-cb51-4c0d-905a-73de5eb5af5b">Mock</option>
+                                                <option value="5fc81267-22f6-4e0d-bedc-36ddadedf38e">NVC</option>
+                                                <option value="2724cf4f-0cea-4b0c-949c-079ef06bfc37">W/O</option>
+                                                <option selected="selected" value="d59aae16-f623-43f0-83cb-d87056f5c2e0">Waiver</option>
+                                            </select>
+
+                                            <p />
+                                            <div class="col-xs-12" style="text-align: right;">
+                                                <div class="form-group">
+                                                    <label class="col-xs-5 control-label"></label>
+                                                    <div class="col-xs-7">
+                                                        <input type="submit" value=" Update " style="height:35px;width:75px;" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            1,594.15
+                                        </td>
+                                        <td>
+                                            Sue Smith
+                                        </td>
+                                        <td>
+                                            800-714-7777
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            12/07/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;Rec&#39;d signed waiver from Marybeth.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            12/07/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;Emailed Sue for status.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            11/30/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;Email from consultant forwarded to Sue as per instructions from DG.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            11/16/12
+                                        </td>
+                                        <td>
+                                            deadra1
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;Emailed Brian Boerner rqst the true exempt percentage&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            11/16/12
+                                        </td>
+                                        <td>
+                                            deadra1
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;Called sue, she is std client is at 45% exempt and want them at 51.64% for 1/10 thru 5/11, what about after 5/11. I called Sue to discuss the percentage issue. She std they are going to set the rqst aside until we confirm the correct percentage, the client sent them a cert for 45% exempt back in August.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            11/16/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;Rec&#39;d em fro Sue asking for clarification on the percentage of exemption. DG is getting with consultant.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            11/12/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;Rec&#39;d em from Sue asking for a completed &amp;amp; ssigned Form S-244. Completed form and emailed back to Sue.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            11/07/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;11/7/12, rec&#39;d email back from Sue stating that the billing department is working on corrections to include the exemptions and she will notify me when its complete.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            11/07/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;LVM for Sue and followed up with an email for her to call or email me back to an update.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            11/01/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;Em POA to Sue.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            10/31/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;Rec&#39;d em from Sue and she is still waiting on the Authorization from Athea before she can proceed.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            10/31/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;Lm for Sue to call me with an update.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            10/26/12
+                                        </td>
+                                        <td>
+                                            daisy
+                                        </td>
+                                        <td style="width:75px;">
+                                            &lt;p&gt;EM VP to &lt;a href=&quot;mailto:sue.smith@we-energies.com&quot;&gt;sue.smith@we-energies.com&lt;/a&gt;.&lt;/p&gt;
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <textarea cols="80" htmlattributes="{ class = form-control }" id="Notes" name="Notes" rows="6"></textarea>
+                                        </td>
+                                    </tr>
+
+                                </table>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+        <hr />
+        <footer>
+            <p style="text-align:center">Copyright &copy; 2009 The SALT Group. All Rights Reserved.</p>
+
+        </footer>
+    </div>
+
+
+    <script src="/Assets/js/plugins.js"></script>
+    <!-- Services -->
+    <!-- Visual Studio Browser Link -->
+    <script type="application/json" id="__browserLink_initializationData">
+        {"appName":"Chrome","requestId":"4dc5341b55ea4eb9a8393c5db4326669"}
+    </script>
+    <script type="text/javascript" src="http://localhost:65269/b114bd38587c4a3d88e03a8fd5a366fb/browserLink" async="async"></script>
+    <!-- End Browser Link -->
+
+</body>
+</html>

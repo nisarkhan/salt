@@ -1,0 +1,72 @@
+﻿@model salt_web.Models.BillingInformationViewModel
+@using PagedList;
+
+@{ViewBag.Title = "Edit";}
+
+@section scripts {
+
+}
+
+@if (TempData["message"] != null)
+{ @Html.Partial("~/Views/Shared/partial/_notification.cshtml");
+}
+
+<div class="row">
+
+    @Html.Partial("~/Views/BillingInformation/_header.cshtml", Model)
+    <!--refund summary-->
+    <div class="col-xs-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                Refund Summary
+            </div>
+            @Html.Partial("~/Views/BillingInformation/_refundSummaryCreate.cshtml", Model)           
+            @Html.Partial("~/Views/BillingInformation/_refundSummaryGrid.cshtml", Model)            
+        </div>
+    </div>
+    
+    <!--refund state-->
+    <div class="col-xs-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                Refund State
+            </div>
+            @Html.Partial("~/Views/BillingInformation/_refundStateCreate.cshtml", Model)
+            @Html.Partial("~/Views/BillingInformation/_refundStateGrid.cshtml", Model)
+        </div>
+        <div style="text-align:right">
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+        <br />
+    </div>
+
+    <!--future benefits-->
+    <div class="col-xs-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                Future Benefits
+            </div>
+            @Html.Partial("~/Views/BillingInformation/_futureBenefitsCreate.cshtml", Model)
+            @Html.Partial("~/Views/BillingInformation/_futureBenefitsGrid.cshtml", Model)
+        </div>
+        <div style="text-align:right">
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+        <br />
+    </div>
+
+    <!--customer payments-->
+    <div class="col-xs-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                Customer Payments
+            </div>
+           @Html.Partial("~/Views/BillingInformation/_customerPaymentsCreate.cshtml", Model)
+           @Html.Partial("~/Views/BillingInformation/_customerPaymentsGrid.cshtml", Model)
+        </div>
+        <div style="text-align:right">
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+        <br />
+    </div>
+</div>

@@ -1,0 +1,613 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="salt_model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="aspnet_Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LoweredUserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Initials" Type="nvarchar" MaxLength="4" />
+          <Property Name="MobileAlias" Type="nvarchar" MaxLength="16" />
+          <Property Name="IsAnonymous" Type="bit" Nullable="false" />
+          <Property Name="LastActivityDate" Type="datetime" Nullable="false" />
+          <Property Name="OldID" Type="nvarchar" MaxLength="50" />
+          <Property Name="DOH" Type="datetime" />
+          <Property Name="LDE" Type="datetime" />
+          <Property Name="Manager" Type="uniqueidentifier" />
+          <Property Name="SecManager" Type="uniqueidentifier" />
+          <Property Name="Trainer" Type="uniqueidentifier" />
+          <Property Name="TypeManager" Type="bit" />
+          <Property Name="TypeAuditor" Type="bit" />
+          <Property Name="TypeBDR" Type="bit" />
+          <Property Name="TypeAcctRep" Type="bit" />
+          <Property Name="TypeColRep" Type="bit" />
+          <Property Name="TypeTrainer" Type="bit" />
+          <Property Name="MenuAdminPosit" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="ClientPKID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClientPKID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ClientCode" Type="nvarchar" MaxLength="256" />
+          <Property Name="CompanyLegalName" Type="nvarchar" MaxLength="256" />
+          <Property Name="DBA" Type="nvarchar" MaxLength="256" />
+          <Property Name="MrMs" Type="nvarchar" MaxLength="256" />
+          <Property Name="ContactFirstName" Type="nvarchar" MaxLength="256" />
+          <Property Name="ContactLastName" Type="nvarchar" MaxLength="256" />
+          <Property Name="ContactTitle" Type="nvarchar" MaxLength="256" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Extension" Type="nvarchar" MaxLength="256" />
+          <Property Name="FaxNumber" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailAddress" Type="nvarchar" MaxLength="256" />
+          <Property Name="Notes" Type="ntext" />
+          <Property Name="Address" Type="nvarchar" MaxLength="256" />
+          <Property Name="City" Type="nvarchar" MaxLength="256" />
+          <Property Name="State" Type="nvarchar" MaxLength="256" />
+          <Property Name="Zip" Type="nvarchar" MaxLength="256" />
+          <Property Name="TaxID" Type="nvarchar" MaxLength="256" />
+          <Property Name="MultiTaxID" Type="bit" Nullable="false" />
+          <Property Name="BillingAddressSame" Type="bit" Nullable="false" />
+          <Property Name="BillingContactSame" Type="bit" Nullable="false" />
+          <Property Name="BillingAddress" Type="nvarchar" MaxLength="256" />
+          <Property Name="BillingCity" Type="nvarchar" MaxLength="256" />
+          <Property Name="BillingState" Type="nvarchar" MaxLength="256" />
+          <Property Name="ZipCode" Type="nvarchar" MaxLength="256" />
+          <Property Name="BillingContactTitle" Type="nvarchar" MaxLength="256" />
+          <Property Name="BillingInfo_PhoneNumber" Type="nvarchar" MaxLength="256" />
+          <Property Name="BillingInfo_Extension" Type="nvarchar" MaxLength="256" />
+          <Property Name="BillingInfo_FaxNumber" Type="nvarchar" MaxLength="256" />
+          <Property Name="BillingInfo_EmailAddress" Type="nvarchar" MaxLength="256" />
+          <Property Name="BillingInfo_Notes" Type="ntext" />
+          <Property Name="BillingInfo_ContactFirstName" Type="nvarchar" MaxLength="256" />
+          <Property Name="BillingInfo_ContactLastName" Type="nvarchar" MaxLength="256" />
+          <Property Name="BillingInfo_MrMrs" Type="nvarchar" MaxLength="256" />
+          <Property Name="RecordsAddress" Type="nvarchar" MaxLength="256" />
+          <Property Name="RecordsCity" Type="nvarchar" MaxLength="256" />
+          <Property Name="RecordsState" Type="nvarchar" MaxLength="256" />
+          <Property Name="RecordsZip" Type="nvarchar" MaxLength="256" />
+          <Property Name="RecordsAddressSame" Type="bit" Nullable="false" />
+          <Property Name="TypeOfContract" Type="nvarchar" MaxLength="256" />
+          <Property Name="Contracts_City" Type="nvarchar" MaxLength="256" />
+          <Property Name="Contracts_State" Type="nvarchar" MaxLength="256" />
+          <Property Name="SalesPerson" Type="nvarchar" MaxLength="256" />
+          <Property Name="PrimarySalesStaff" Type="uniqueidentifier" />
+          <Property Name="SecondarySalesStaff" Type="uniqueidentifier" />
+          <Property Name="BusinessDevRep" Type="nvarchar" MaxLength="256" />
+          <Property Name="PrimaryConsultant" Type="nvarchar" MaxLength="256" />
+          <Property Name="SecondaryConsultant" Type="nvarchar" MaxLength="256" />
+          <Property Name="GMRevenue" Type="nvarchar" MaxLength="256" />
+          <Property Name="FeeTerms" Type="nvarchar" MaxLength="256" />
+          <Property Name="ContractDateSigned" Type="nvarchar" MaxLength="256" />
+          <Property Name="ContractSignedBy" Type="nvarchar" MaxLength="256" />
+          <Property Name="ContractTitle" Type="nvarchar" MaxLength="256" />
+          <Property Name="TentativeAuditDate" Type="datetime" />
+          <Property Name="Auditor" Type="nvarchar" MaxLength="256" />
+          <Property Name="Auditors_Key" Type="uniqueidentifier" />
+          <Property Name="OldAuditors_Key" Type="nvarchar" MaxLength="256" />
+          <Property Name="Third3rdAuditor" Type="nvarchar" MaxLength="256" />
+          <Property Name="JKHStatus" Type="int" Nullable="false" />
+          <Property Name="ScheduledAuditDate" Type="datetime" />
+          <Property Name="Confirmed" Type="nvarchar" MaxLength="256" />
+          <Property Name="PPMT" Type="nvarchar" MaxLength="256" />
+          <Property Name="FuturesRate" Type="nvarchar" MaxLength="256" />
+          <Property Name="FuturesInstallments" Type="nvarchar" MaxLength="256" />
+          <Property Name="CancelationFee" Type="bit" Nullable="false" />
+          <Property Name="CancelationFeeAmount" Type="nvarchar" MaxLength="256" />
+          <Property Name="CancelationFeeBilled" Type="bit" Nullable="false" />
+          <Property Name="DiscountOffered" Type="bit" Nullable="false" />
+          <Property Name="DateDiscountOffered" Type="datetime" />
+          <Property Name="AmountofDiscount" Type="money" />
+          <Property Name="EstimateDollarAmount" Type="money" />
+          <Property Name="EstimateDollarAmountReceivedDate" Type="datetime" />
+          <Property Name="AccountRep" Type="nvarchar" MaxLength="256" />
+          <Property Name="PersonToCalculate" Type="nvarchar" MaxLength="256" />
+          <Property Name="DateAssignedToRep" Type="datetime" />
+          <Property Name="EstDateCalculation" Type="datetime" />
+          <Property Name="DateCalculated" Type="datetime" />
+          <Property Name="CalculatedAmount" Type="money" />
+          <Property Name="EstDateReportToBeDone" Type="datetime" />
+          <Property Name="ReportDate" Type="datetime" />
+          <Property Name="ReportAmount" Type="nvarchar" MaxLength="256" />
+          <Property Name="LOADate" Type="nvarchar" MaxLength="256" />
+          <Property Name="PayNotes" Type="nvarchar" MaxLength="256" />
+          <Property Name="ReportChecklistReceived" Type="datetime" />
+          <Property Name="AdditionsReceived" Type="datetime" />
+          <Property Name="FinalReportDate" Type="datetime" />
+          <Property Name="FinalReportAmount" Type="money" />
+          <Property Name="NonRefundAdvance" Type="money" />
+          <Property Name="NonRefundContract" Type="money" />
+          <Property Name="NonRefundPrePay" Type="money" />
+          <Property Name="NonRefundFuture" Type="money" />
+          <Property Name="CommentSalesTracking" Type="ntext" />
+          <Property Name="Assigned" Type="nvarchar" MaxLength="256" />
+          <Property Name="Travel" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="RentalCar" Type="int" Nullable="false" />
+          <Property Name="AuditDate" Type="datetime" />
+          <Property Name="ARMeetingStatus" Type="ntext" />
+          <Property Name="InKerr" Type="datetime" />
+          <Property Name="AcctRep" Type="uniqueidentifier" />
+          <Property Name="PayDate" Type="nvarchar" MaxLength="256" />
+          <Property Name="SecondaryAuditor" Type="uniqueidentifier" />
+          <Property Name="CollectionsReportDate" Type="datetime" />
+          <Property Name="CollectionsDateRecvd" Type="datetime" />
+          <Property Name="CollectionsDateAssigned" Type="datetime" />
+          <Property Name="CollectionsAssignedTo" Type="uniqueidentifier" />
+          <Property Name="CollectionsDatePktRecvd" Type="datetime" />
+          <Property Name="CollectionsNotes" Type="ntext" />
+          <Property Name="LastCallDate" Type="datetime" />
+          <Property Name="CollectionClosed" Type="bit" />
+          <Property Name="ofLocations" Type="int" />
+          <Property Name="LeadSource" Type="nvarchar" MaxLength="256" />
+          <Property Name="ReviewRevenue" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="EmployeeCount" Type="int" />
+          <Property Name="JobFinalDate" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'salt.dbo.MenuContractTypes' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="MenuContractTypes">
+          <Property Name="TypeOfContract" Type="nvarchar" MaxLength="25" />
+          <Property Name="Code" Type="nvarchar" MaxLength="2" />
+        </EntityType>-->
+        <EntityType Name="MenuUSStates">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="255" />
+          <Property Name="Abbrev" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Vendors">
+          <Key>
+            <PropertyRef Name="VendorPKID" />
+          </Key>
+          <Property Name="VendorPKID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="VendorCode" Type="nchar" MaxLength="10" />
+          <Property Name="CompanyLegalName" Type="nchar" MaxLength="50" />
+          <Property Name="DBA" Type="nchar" MaxLength="50" />
+          <Property Name="MrMs" Type="nchar" MaxLength="50" />
+          <Property Name="ContactFirstName" Type="nchar" MaxLength="30" />
+          <Property Name="ContactLastName" Type="nchar" MaxLength="50" />
+          <Property Name="ContactTitle" Type="nchar" MaxLength="50" />
+          <Property Name="PhoneNumber" Type="nchar" MaxLength="30" />
+          <Property Name="Extension" Type="nchar" MaxLength="30" />
+          <Property Name="FaxNumber" Type="nchar" MaxLength="30" />
+          <Property Name="EmailAddress" Type="nchar" MaxLength="50" />
+          <Property Name="Notes" Type="ntext" />
+          <Property Name="Address" Type="nchar" MaxLength="50" />
+          <Property Name="City" Type="nchar" MaxLength="50" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+          <Property Name="Zip" Type="nchar" MaxLength="50" />
+          <Property Name="TaxID" Type="bit" />
+          <Property Name="MultiTaxID" Type="bit" />
+          <Property Name="BillingAddressSame" Type="bit" />
+          <Property Name="BillingContactSame" Type="bit" />
+          <Property Name="ClientLocation" Type="nchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="salt_modelStoreContainer">
+          <EntitySet Name="aspnet_Users" EntityType="Self.aspnet_Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MenuUSStates" EntityType="Self.MenuUSStates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vendors" EntityType="Self.Vendors" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="salt_model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="aspnet_Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LoweredUserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Initials" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="MobileAlias" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="IsAnonymous" Type="Boolean" Nullable="false" />
+          <Property Name="LastActivityDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OldID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DOH" Type="DateTime" Precision="3" />
+          <Property Name="LDE" Type="DateTime" Precision="3" />
+          <Property Name="Manager" Type="Guid" />
+          <Property Name="SecManager" Type="Guid" />
+          <Property Name="Trainer" Type="Guid" />
+          <Property Name="TypeManager" Type="Boolean" />
+          <Property Name="TypeAuditor" Type="Boolean" />
+          <Property Name="TypeBDR" Type="Boolean" />
+          <Property Name="TypeAcctRep" Type="Boolean" />
+          <Property Name="TypeColRep" Type="Boolean" />
+          <Property Name="TypeTrainer" Type="Boolean" />
+          <Property Name="MenuAdminPosit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="ClientPKID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClientPKID" Type="Guid" Nullable="false" />
+          <Property Name="ClientCode" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyLegalName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="DBA" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="MrMs" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="ContactFirstName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="ContactLastName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="ContactTitle" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Extension" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="FaxNumber" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailAddress" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Zip" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="TaxID" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="MultiTaxID" Type="Boolean" Nullable="false" />
+          <Property Name="BillingAddressSame" Type="Boolean" Nullable="false" />
+          <Property Name="BillingContactSame" Type="Boolean" Nullable="false" />
+          <Property Name="BillingAddress" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="BillingCity" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="BillingState" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="ZipCode" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="BillingContactTitle" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="BillingInfo_PhoneNumber" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="BillingInfo_Extension" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="BillingInfo_FaxNumber" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="BillingInfo_EmailAddress" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="BillingInfo_Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BillingInfo_ContactFirstName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="BillingInfo_ContactLastName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="BillingInfo_MrMrs" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="RecordsAddress" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="RecordsCity" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="RecordsState" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="RecordsZip" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="RecordsAddressSame" Type="Boolean" Nullable="false" />
+          <Property Name="TypeOfContract" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Contracts_City" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Contracts_State" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="SalesPerson" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="PrimarySalesStaff" Type="Guid" />
+          <Property Name="SecondarySalesStaff" Type="Guid" />
+          <Property Name="BusinessDevRep" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="PrimaryConsultant" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="SecondaryConsultant" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="GMRevenue" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="FeeTerms" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="ContractDateSigned" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="ContractSignedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="ContractTitle" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="TentativeAuditDate" Type="DateTime" Precision="3" />
+          <Property Name="Auditor" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Auditors_Key" Type="Guid" />
+          <Property Name="OldAuditors_Key" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Third3rdAuditor" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="JKHStatus" Type="Int32" Nullable="false" />
+          <Property Name="ScheduledAuditDate" Type="DateTime" Precision="3" />
+          <Property Name="Confirmed" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="PPMT" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="FuturesRate" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="FuturesInstallments" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="CancelationFee" Type="Boolean" Nullable="false" />
+          <Property Name="CancelationFeeAmount" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="CancelationFeeBilled" Type="Boolean" Nullable="false" />
+          <Property Name="DiscountOffered" Type="Boolean" Nullable="false" />
+          <Property Name="DateDiscountOffered" Type="DateTime" Precision="3" />
+          <Property Name="AmountofDiscount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="EstimateDollarAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="EstimateDollarAmountReceivedDate" Type="DateTime" Precision="3" />
+          <Property Name="AccountRep" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="PersonToCalculate" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="DateAssignedToRep" Type="DateTime" Precision="3" />
+          <Property Name="EstDateCalculation" Type="DateTime" Precision="3" />
+          <Property Name="DateCalculated" Type="DateTime" Precision="3" />
+          <Property Name="CalculatedAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="EstDateReportToBeDone" Type="DateTime" Precision="3" />
+          <Property Name="ReportDate" Type="DateTime" Precision="3" />
+          <Property Name="ReportAmount" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="LOADate" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="PayNotes" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="ReportChecklistReceived" Type="DateTime" Precision="3" />
+          <Property Name="AdditionsReceived" Type="DateTime" Precision="3" />
+          <Property Name="FinalReportDate" Type="DateTime" Precision="3" />
+          <Property Name="FinalReportAmount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="NonRefundAdvance" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="NonRefundContract" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="NonRefundPrePay" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="NonRefundFuture" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CommentSalesTracking" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Assigned" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Travel" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RentalCar" Type="Int32" Nullable="false" />
+          <Property Name="AuditDate" Type="DateTime" Precision="3" />
+          <Property Name="ARMeetingStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="InKerr" Type="DateTime" Precision="3" />
+          <Property Name="AcctRep" Type="Guid" />
+          <Property Name="PayDate" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="SecondaryAuditor" Type="Guid" />
+          <Property Name="CollectionsReportDate" Type="DateTime" Precision="3" />
+          <Property Name="CollectionsDateRecvd" Type="DateTime" Precision="3" />
+          <Property Name="CollectionsDateAssigned" Type="DateTime" Precision="3" />
+          <Property Name="CollectionsAssignedTo" Type="Guid" />
+          <Property Name="CollectionsDatePktRecvd" Type="DateTime" Precision="3" />
+          <Property Name="CollectionsNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastCallDate" Type="DateTime" Precision="3" />
+          <Property Name="CollectionClosed" Type="Boolean" />
+          <Property Name="ofLocations" Type="Int32" />
+          <Property Name="LeadSource" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="ReviewRevenue" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="EmployeeCount" Type="Int32" />
+          <Property Name="JobFinalDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="MenuUSState">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="Guid" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Abbrev" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="VendorPKID" />
+          </Key>
+          <Property Name="VendorPKID" Type="Guid" Nullable="false" />
+          <Property Name="VendorCode" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="CompanyLegalName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="DBA" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="MrMs" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="ContactFirstName" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="ContactLastName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="ContactTitle" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="Extension" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="FaxNumber" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Zip" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="TaxID" Type="Boolean" />
+          <Property Name="MultiTaxID" Type="Boolean" />
+          <Property Name="BillingAddressSame" Type="Boolean" />
+          <Property Name="BillingContactSame" Type="Boolean" />
+          <Property Name="ClientLocation" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="salt_entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="aspnet_Users" EntityType="Self.aspnet_Users" />
+          <EntitySet Name="Clients" EntityType="Self.Client" />
+          <EntitySet Name="MenuUSStates" EntityType="Self.MenuUSState" />
+          <EntitySet Name="Vendors" EntityType="Self.Vendor" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="salt_modelStoreContainer" CdmEntityContainer="salt_entities">
+          <EntitySetMapping Name="aspnet_Users">
+            <EntityTypeMapping TypeName="salt_model.aspnet_Users">
+              <MappingFragment StoreEntitySet="aspnet_Users">
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="LoweredUserName" ColumnName="LoweredUserName" />
+                <ScalarProperty Name="Initials" ColumnName="Initials" />
+                <ScalarProperty Name="MobileAlias" ColumnName="MobileAlias" />
+                <ScalarProperty Name="IsAnonymous" ColumnName="IsAnonymous" />
+                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+                <ScalarProperty Name="OldID" ColumnName="OldID" />
+                <ScalarProperty Name="DOH" ColumnName="DOH" />
+                <ScalarProperty Name="LDE" ColumnName="LDE" />
+                <ScalarProperty Name="Manager" ColumnName="Manager" />
+                <ScalarProperty Name="SecManager" ColumnName="SecManager" />
+                <ScalarProperty Name="Trainer" ColumnName="Trainer" />
+                <ScalarProperty Name="TypeManager" ColumnName="TypeManager" />
+                <ScalarProperty Name="TypeAuditor" ColumnName="TypeAuditor" />
+                <ScalarProperty Name="TypeBDR" ColumnName="TypeBDR" />
+                <ScalarProperty Name="TypeAcctRep" ColumnName="TypeAcctRep" />
+                <ScalarProperty Name="TypeColRep" ColumnName="TypeColRep" />
+                <ScalarProperty Name="TypeTrainer" ColumnName="TypeTrainer" />
+                <ScalarProperty Name="MenuAdminPosit" ColumnName="MenuAdminPosit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="salt_model.Client">
+              <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="ClientPKID" ColumnName="ClientPKID" />
+                <ScalarProperty Name="ClientCode" ColumnName="ClientCode" />
+                <ScalarProperty Name="CompanyLegalName" ColumnName="CompanyLegalName" />
+                <ScalarProperty Name="DBA" ColumnName="DBA" />
+                <ScalarProperty Name="MrMs" ColumnName="MrMs" />
+                <ScalarProperty Name="ContactFirstName" ColumnName="ContactFirstName" />
+                <ScalarProperty Name="ContactLastName" ColumnName="ContactLastName" />
+                <ScalarProperty Name="ContactTitle" ColumnName="ContactTitle" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+                <ScalarProperty Name="FaxNumber" ColumnName="FaxNumber" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="TaxID" ColumnName="TaxID" />
+                <ScalarProperty Name="MultiTaxID" ColumnName="MultiTaxID" />
+                <ScalarProperty Name="BillingAddressSame" ColumnName="BillingAddressSame" />
+                <ScalarProperty Name="BillingContactSame" ColumnName="BillingContactSame" />
+                <ScalarProperty Name="BillingAddress" ColumnName="BillingAddress" />
+                <ScalarProperty Name="BillingCity" ColumnName="BillingCity" />
+                <ScalarProperty Name="BillingState" ColumnName="BillingState" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="BillingContactTitle" ColumnName="BillingContactTitle" />
+                <ScalarProperty Name="BillingInfo_PhoneNumber" ColumnName="BillingInfo_PhoneNumber" />
+                <ScalarProperty Name="BillingInfo_Extension" ColumnName="BillingInfo_Extension" />
+                <ScalarProperty Name="BillingInfo_FaxNumber" ColumnName="BillingInfo_FaxNumber" />
+                <ScalarProperty Name="BillingInfo_EmailAddress" ColumnName="BillingInfo_EmailAddress" />
+                <ScalarProperty Name="BillingInfo_Notes" ColumnName="BillingInfo_Notes" />
+                <ScalarProperty Name="BillingInfo_ContactFirstName" ColumnName="BillingInfo_ContactFirstName" />
+                <ScalarProperty Name="BillingInfo_ContactLastName" ColumnName="BillingInfo_ContactLastName" />
+                <ScalarProperty Name="BillingInfo_MrMrs" ColumnName="BillingInfo_MrMrs" />
+                <ScalarProperty Name="RecordsAddress" ColumnName="RecordsAddress" />
+                <ScalarProperty Name="RecordsCity" ColumnName="RecordsCity" />
+                <ScalarProperty Name="RecordsState" ColumnName="RecordsState" />
+                <ScalarProperty Name="RecordsZip" ColumnName="RecordsZip" />
+                <ScalarProperty Name="RecordsAddressSame" ColumnName="RecordsAddressSame" />
+                <ScalarProperty Name="TypeOfContract" ColumnName="TypeOfContract" />
+                <ScalarProperty Name="Contracts_City" ColumnName="Contracts_City" />
+                <ScalarProperty Name="Contracts_State" ColumnName="Contracts_State" />
+                <ScalarProperty Name="SalesPerson" ColumnName="SalesPerson" />
+                <ScalarProperty Name="PrimarySalesStaff" ColumnName="PrimarySalesStaff" />
+                <ScalarProperty Name="SecondarySalesStaff" ColumnName="SecondarySalesStaff" />
+                <ScalarProperty Name="BusinessDevRep" ColumnName="BusinessDevRep" />
+                <ScalarProperty Name="PrimaryConsultant" ColumnName="PrimaryConsultant" />
+                <ScalarProperty Name="SecondaryConsultant" ColumnName="SecondaryConsultant" />
+                <ScalarProperty Name="GMRevenue" ColumnName="GMRevenue" />
+                <ScalarProperty Name="FeeTerms" ColumnName="FeeTerms" />
+                <ScalarProperty Name="ContractDateSigned" ColumnName="ContractDateSigned" />
+                <ScalarProperty Name="ContractSignedBy" ColumnName="ContractSignedBy" />
+                <ScalarProperty Name="ContractTitle" ColumnName="ContractTitle" />
+                <ScalarProperty Name="TentativeAuditDate" ColumnName="TentativeAuditDate" />
+                <ScalarProperty Name="Auditor" ColumnName="Auditor" />
+                <ScalarProperty Name="Auditors_Key" ColumnName="Auditors_Key" />
+                <ScalarProperty Name="OldAuditors_Key" ColumnName="OldAuditors_Key" />
+                <ScalarProperty Name="Third3rdAuditor" ColumnName="Third3rdAuditor" />
+                <ScalarProperty Name="JKHStatus" ColumnName="JKHStatus" />
+                <ScalarProperty Name="ScheduledAuditDate" ColumnName="ScheduledAuditDate" />
+                <ScalarProperty Name="Confirmed" ColumnName="Confirmed" />
+                <ScalarProperty Name="PPMT" ColumnName="PPMT" />
+                <ScalarProperty Name="FuturesRate" ColumnName="FuturesRate" />
+                <ScalarProperty Name="FuturesInstallments" ColumnName="FuturesInstallments" />
+                <ScalarProperty Name="CancelationFee" ColumnName="CancelationFee" />
+                <ScalarProperty Name="CancelationFeeAmount" ColumnName="CancelationFeeAmount" />
+                <ScalarProperty Name="CancelationFeeBilled" ColumnName="CancelationFeeBilled" />
+                <ScalarProperty Name="DiscountOffered" ColumnName="DiscountOffered" />
+                <ScalarProperty Name="DateDiscountOffered" ColumnName="DateDiscountOffered" />
+                <ScalarProperty Name="AmountofDiscount" ColumnName="AmountofDiscount" />
+                <ScalarProperty Name="EstimateDollarAmount" ColumnName="EstimateDollarAmount" />
+                <ScalarProperty Name="EstimateDollarAmountReceivedDate" ColumnName="EstimateDollarAmountReceivedDate" />
+                <ScalarProperty Name="AccountRep" ColumnName="AccountRep" />
+                <ScalarProperty Name="PersonToCalculate" ColumnName="PersonToCalculate" />
+                <ScalarProperty Name="DateAssignedToRep" ColumnName="DateAssignedToRep" />
+                <ScalarProperty Name="EstDateCalculation" ColumnName="EstDateCalculation" />
+                <ScalarProperty Name="DateCalculated" ColumnName="DateCalculated" />
+                <ScalarProperty Name="CalculatedAmount" ColumnName="CalculatedAmount" />
+                <ScalarProperty Name="EstDateReportToBeDone" ColumnName="EstDateReportToBeDone" />
+                <ScalarProperty Name="ReportDate" ColumnName="ReportDate" />
+                <ScalarProperty Name="ReportAmount" ColumnName="ReportAmount" />
+                <ScalarProperty Name="LOADate" ColumnName="LOADate" />
+                <ScalarProperty Name="PayNotes" ColumnName="PayNotes" />
+                <ScalarProperty Name="ReportChecklistReceived" ColumnName="ReportChecklistReceived" />
+                <ScalarProperty Name="AdditionsReceived" ColumnName="AdditionsReceived" />
+                <ScalarProperty Name="FinalReportDate" ColumnName="FinalReportDate" />
+                <ScalarProperty Name="FinalReportAmount" ColumnName="FinalReportAmount" />
+                <ScalarProperty Name="NonRefundAdvance" ColumnName="NonRefundAdvance" />
+                <ScalarProperty Name="NonRefundContract" ColumnName="NonRefundContract" />
+                <ScalarProperty Name="NonRefundPrePay" ColumnName="NonRefundPrePay" />
+                <ScalarProperty Name="NonRefundFuture" ColumnName="NonRefundFuture" />
+                <ScalarProperty Name="CommentSalesTracking" ColumnName="CommentSalesTracking" />
+                <ScalarProperty Name="Assigned" ColumnName="Assigned" />
+                <ScalarProperty Name="Travel" ColumnName="Travel" />
+                <ScalarProperty Name="RentalCar" ColumnName="RentalCar" />
+                <ScalarProperty Name="AuditDate" ColumnName="AuditDate" />
+                <ScalarProperty Name="ARMeetingStatus" ColumnName="ARMeetingStatus" />
+                <ScalarProperty Name="InKerr" ColumnName="InKerr" />
+                <ScalarProperty Name="AcctRep" ColumnName="AcctRep" />
+                <ScalarProperty Name="PayDate" ColumnName="PayDate" />
+                <ScalarProperty Name="SecondaryAuditor" ColumnName="SecondaryAuditor" />
+                <ScalarProperty Name="CollectionsReportDate" ColumnName="CollectionsReportDate" />
+                <ScalarProperty Name="CollectionsDateRecvd" ColumnName="CollectionsDateRecvd" />
+                <ScalarProperty Name="CollectionsDateAssigned" ColumnName="CollectionsDateAssigned" />
+                <ScalarProperty Name="CollectionsAssignedTo" ColumnName="CollectionsAssignedTo" />
+                <ScalarProperty Name="CollectionsDatePktRecvd" ColumnName="CollectionsDatePktRecvd" />
+                <ScalarProperty Name="CollectionsNotes" ColumnName="CollectionsNotes" />
+                <ScalarProperty Name="LastCallDate" ColumnName="LastCallDate" />
+                <ScalarProperty Name="CollectionClosed" ColumnName="CollectionClosed" />
+                <ScalarProperty Name="ofLocations" ColumnName="ofLocations" />
+                <ScalarProperty Name="LeadSource" ColumnName="LeadSource" />
+                <ScalarProperty Name="ReviewRevenue" ColumnName="ReviewRevenue" />
+                <ScalarProperty Name="EmployeeCount" ColumnName="EmployeeCount" />
+                <ScalarProperty Name="JobFinalDate" ColumnName="JobFinalDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuUSStates">
+            <EntityTypeMapping TypeName="salt_model.MenuUSState">
+              <MappingFragment StoreEntitySet="MenuUSStates">
+                <ScalarProperty Name="PKID" ColumnName="PKID" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Abbrev" ColumnName="Abbrev" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vendors">
+            <EntityTypeMapping TypeName="salt_model.Vendor">
+              <MappingFragment StoreEntitySet="Vendors">
+                <ScalarProperty Name="VendorPKID" ColumnName="VendorPKID" />
+                <ScalarProperty Name="VendorCode" ColumnName="VendorCode" />
+                <ScalarProperty Name="CompanyLegalName" ColumnName="CompanyLegalName" />
+                <ScalarProperty Name="DBA" ColumnName="DBA" />
+                <ScalarProperty Name="MrMs" ColumnName="MrMs" />
+                <ScalarProperty Name="ContactFirstName" ColumnName="ContactFirstName" />
+                <ScalarProperty Name="ContactLastName" ColumnName="ContactLastName" />
+                <ScalarProperty Name="ContactTitle" ColumnName="ContactTitle" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+                <ScalarProperty Name="FaxNumber" ColumnName="FaxNumber" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="TaxID" ColumnName="TaxID" />
+                <ScalarProperty Name="MultiTaxID" ColumnName="MultiTaxID" />
+                <ScalarProperty Name="BillingAddressSame" ColumnName="BillingAddressSame" />
+                <ScalarProperty Name="BillingContactSame" ColumnName="BillingContactSame" />
+                <ScalarProperty Name="ClientLocation" ColumnName="ClientLocation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

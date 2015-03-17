@@ -1,0 +1,123 @@
+﻿@model IEnumerable<salt_web.Models.CollectionViewModel>
+@using PagedList;
+
+@{ViewBag.Title = "Edit";}
+
+@section scripts {
+
+}
+
+@if (TempData["message"] != null)
+{ @Html.Partial("~/Views/Shared/partial/_notification.cshtml");
+}
+
+  <div class="row">
+      <br />
+    @Html.Partial("~/Views/BillingInformation/_collectionHeader.cshtml", Model)
+      <br />
+    <div class="col-xs-12">
+
+        <br />
+        <div class="panel panel-primary">
+            
+            <div class="panel-heading">
+                Collection Info
+            </div>
+            <br />
+
+
+            <div class="panel-body">
+                <div class="tab-content">
+                    <div class="tab-pane active">
+
+                        <table class="table" >
+                             
+                             <tr>
+                                <th style="text-align:left;color:#3399f3">Vendor</th>
+                                <th style="text-align:left;color:#3399f3">Claim Amount</th>
+                                <th style="text-align:left;color:#3399f3">Amount Received</th>
+                                <th style="text-align:left;color:#3399f3">Type</th>
+                                <th style="text-align:left;color:#3399f3"></th>
+                                <th style="text-align:left;color:#3399f3">Amount Due</th>
+                                <th style="text-align:left;color:#3399f3">Contact</th>
+                                <th style="text-align:left;color:#3399f3">Phone #</th>
+                            </tr>
+
+                            <tr>
+                                <th style="text-align:left;color:#3399f3">Date</th>
+                                <th style="text-align:left;color:#3399f3">Rep</th>
+                                <th style="text-align:left;color:#3399f3">Notes</th>
+                                <th style="text-align:left;color:#3399f3"></th>
+                                <th style="text-align:left;color:#3399f3"></th>
+                                <th style="text-align:left;color:#3399f3"></th>
+                                <th style="text-align:left;color:#3399f3"></th>
+                                <th style="text-align:left;color:#3399f3"></th>
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+                                
+                                <tr>
+                                    <td>
+                                        @item.Vendor
+                                    </td>
+                                    <td>
+                                        @item.AmountIdentified.Value.ToString("N")
+                                    </td>
+                                    <td>
+                                        @item.AmountRecovered.Value.ToString("N")
+                                    </td>
+
+                                @using (Html.BeginForm("CollectionUpdateTypeDDL", "BillingInformation", new { id = item.PKID }, FormMethod.Post))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    
+                                    <td>@Html.DropDownList("DropDownLoadRecoveryType", new SelectList(ViewBag.DropDownLoadRecoveryType, "Value", "Text", item.Type), new { @class = "form-control" })</td>
+                                    <td><input type="submit" value=" Update " style="height:35px;width:75px;" /></td>
+                                }
+                                    <td>
+                                        @item.AmountDue.Value.ToString("N")
+                                    </td>
+                                    <td>
+                                        @item.Contact
+                                    </td>
+                                    <td>
+                                        @item.PhoneNumber
+                                    </td>
+                                </tr>
+
+
+                                foreach (var item1 in item.CollectionDetailViewModel)
+                                {
+                                    <tr>
+                                        <td>@item1.Date</td>
+                                        <td>@item1.Rep</td>
+                                        <td colspan="7">@item1.Notes</td> 
+                                    </tr>
+                                }
+  
+                                <tr>
+                                    @using (Html.BeginForm("CollectionInsertTextArea", "BillingInformation", new { id = item.PKID }, FormMethod.Post))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <td colspan="2"></td>
+                                        <td colspan="7">
+                                            <textarea name="notes" id="notes" cols="8" rows="6" class="form-control"></textarea>
+                                            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="submit" value=" Insert " style="height:35px;width:75px;" /></td>
+                                    }                                
+                                </tr>
+
+                            }
+
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html ng-app="userApp">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Salt Application</title>
+
+    @RenderSection("Css", false)
+
+    <link href="~/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assets/css/font-awesome.min.css" rel="stylesheet">
+
+    
+    <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+    <link href=" ~/assets/css/sunloan.css" rel="stylesheet">
+    <link href="~/assets/css/sunloan.datatable.css" rel="stylesheet">
+    <link href="~/assets/css/sunloan.datepicker.css" rel="stylesheet">
+    <link href="~/assets/css/sunloan.animate.css" rel="stylesheet">
+
+     
+    <script src="~/Assets/js/vendor/jquery.min.js"></script>
+    <script src="~/Assets/js/vendor/bootstrap.min.js"></script>
+     
+    @*<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>*@
+    
+
+    @*<link data-require="bootstrap-css" data-semver="3.3.1" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />*@
+
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Assets/css/custom-bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+
+
+    <sun-notification></sun-notification>
+    @*<sun-header></sun-header>*@
+
+    <!--header starts-->
+    @Html.Partial("~/Views/Shared/partial/_headermvc.cshtml")
+
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p style="text-align:center">Copyright &copy; 2009 The SALT Group. All Rights Reserved.</p>
+
+        </footer>
+    </div>
+ 
+    @*<script src="~/scripts/customer.js"></script>
+    <script src="~/scripts/common/directives/templates.js"></script>
+    <script src="~/scripts/common/directives/gridview.js"></script>
+    <script src="~/scripts/common/directives/dropdown.js"></script>
+    <script src="~/scripts/common/directives/mask.js"></script>
+    <script src="~/scripts/common/directives/form.js"></script>
+    <script src="~/scripts/common/directives/match.js"></script>*@
+    <script src="~/Assets/js/plugins.js"></script>
+    <!-- Services -->
+    @*<script src="~/scripts/common/services/storage.js"></script>
+    <script src="~/Scripts/common/services/api_geo_names.js"></script>
+    <script src="~/Scripts/common/services/salt.js"></script>*@
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

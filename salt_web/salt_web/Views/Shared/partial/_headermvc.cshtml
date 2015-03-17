@@ -1,0 +1,95 @@
+﻿<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <a href="@Url.Action("Index", "Home")">
+                <img src='@Url.Content("~/images/logo.gif")' style="width:75px;height:50px;" />
+            </a>
+        </div>
+
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">Clients <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("User List", "Index", "User")</li>
+                        <li class="divider"></li>
+                        <li>@Html.ActionLink("Update Client", "Index", "Client")</li>
+                        <li class="divider"></li>
+                        <li>@Html.ActionLink("New Client", "Create", "Client")</li>
+                        <li class="divider"></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">Vendors <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("Update Vendor", "Index", "Vendor")</li>
+                        <li class="divider"></li>
+                        <li>@Html.ActionLink("New Vendor", "Create", "Vendor")</li>
+                        <li class="divider"></li> 
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">Employees <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("New Employee", "Create", "Employee")</li>
+                        <li class="divider"></li>
+                        <li>@Html.ActionLink("Employee List", "Index", "Employee")</li>
+                        <li class="divider"></li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">Job Tracking <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("Auditor Info", "Index", "JobTracking")</li>
+                        <li class="divider"></li>
+ 
+                      
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">Data Entry <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("Billing Statements", "Index", "BillingInformation")</li>                        
+                        <li class="divider"></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">Working Web <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("New Request", "Create", "NewRequest")</li>   
+                        <li class="divider"></li>
+                        <li>@Html.ActionLink("Request Request", "Index", "NewRequest")</li>   
+                        <li class="divider"></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle">Report <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Reports</a></li>
+                        <li class="divider"></li>
+
+                         <li><a href="#">Report Info</a></li>
+                    </ul>
+                </li>
+
+                @*<li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("About", "About", "Home")</li>
+                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                <li>@Html.ActionLink("My Profile", "MyProfile", "Account")</li>
+                <li>@Html.ActionLink("Forgot Password", "ForgotPassword", "Account")</li>
+                <li>@Html.ActionLink("Employees", "Create", "Employees")</li>*@
+            </ul>
+            <!--Html.Partial("_LoginPartial")-->
+        </div>
+
+    </div>
+
+</div>
+
